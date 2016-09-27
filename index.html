@@ -5,6 +5,7 @@
     <title>Didacticiel jQuery</title>
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="didacticiel.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
     <link rel="stylesheet" href="main.css" type="text/css">
   </head>
   <body>
@@ -12,11 +13,107 @@
     <h2>Introduction</h2>
     <section>
       <blockquote>
-        jQuery est une bibliothèque JavaScript rapide, compacte et riche. Il réalise des choses comme le parcours et la manipulation de documents HTML, la gestion d'évènements, l'animation, l'<abbr title="Asynchronious JavaScript And XML">AJAX</abbr>, d'une manière très simple et avec une <abbr title="Application Programming Interface">API</abbr> fonctionnant sur une multitude de navigateurs. Avec une combinaison de versatilité et d'extensibilité, jQuery a changé la façon d'écrire du JavaScript pour des millions de personnes.
+        jQuery est une bibliothèque JavaScript rapide, compacte et riche. Elle réalise des choses comme le parcours et la manipulation de documents HTML, la gestion d'évènements, l'animation ou encore les requêtes <abbr title="Asynchronious JavaScript And XML">AJAX</abbr>, d'une manière très simple et avec une <abbr title="Application Programming Interface">API</abbr> fonctionnant sur une multitude de navigateurs. Avec une combinaison de versatilité et d'extensibilité, jQuery a changé la façon d'écrire du JavaScript pour des millions de personnes.
         <p>
           Page d'accueil jQuery, <a href="https://jquery.com">https://jquery.com</a>
         </p>
       </blockquote>
+    </section>
+    <h2>Installation</h2>
+    <section>
+      <p>
+        Bien qu'il soit possible d'installer jQuery, ceci n'est pas nécessaire. Nous pouvons pour cela utiliser un <abbr title="Content Delivery Network">CDN</abbr>, c'est-à-dire utiliser un dépôt distant sur lequel jQuery se trouve.
+      </p>
+
+      <p>
+        Dans le <code>head</code> de votre page HTML, insérez la ligne suivante :
+        <pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; font-weight:bold; '>script</span> src=<span style='color:#2a00ff; '>"http://code.jquery.com/jquery-3.0.0.min.js"</span><span style='color:#7f0055; '>></span><span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; font-weight:bold; '>script</span><span style='color:#7f0055; '>></span></pre>
+        <div class="attention">
+          Remplacez <code>3.0.0</code> par la version actuelle de jQuery que vous trouverez sur <a href="http://code.jquery.com">code.jquery.com</a>.
+        </div>
+      </p>
+      <p>
+        Toujours dans le <code>head</code>, ajoutez un appel à votre script JS avec :
+        <pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; font-weight:bold; '>script</span> src=<span style='color:#2a00ff; '>"un-script.js"</span> defer<span style='color:#7f0055; '>></span><span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; font-weight:bold; '>script</span><span style='color:#7f0055; '>></span></pre>
+      </p>
+      <code>defer</code> signifie que le code sera chargé uniquement lorsque la page actuelle aura terminé de se charger. Si vous omettez cet attribut, votre script sera inutile car il agira sur des éléments qui n'existent pas encore.
+      <div class="attention">
+        Si vous préférez insérer votre code javascript directement dans le fichier HTML (ce qui n'est pas recommandé), alors <code>defer</code> est inutile, vous devez plutôt placer votre balise <code>script</code> juste avant la fermeture du <code>body</code>.
+      </div>
+    </section>
+    <h2>Premier script</h2>
+    <section>
+      <h3>Sélecteurs</h3>
+      <section>
+        <p>
+          jQuery, c'est avant tout des sélecteurs. Lorsqu'on désire sélectionner un élément en JavaScript, par exemple par son ID, on utilise
+          <pre style='color:#000000;background:#ffffff;'>document.findElementById(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>unId</span><span style='color:#2a00ff; '>'</span>)</pre>
+        </p>
+        <p>
+          jQuery a décidé d'utiliser les mêmes sélecteurs que le CSS. Ainsi, pour obtenir un élément par son ID, on utilise
+          <pre style='color:#000000;background:#ffffff;'>$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#unId</span><span style='color:#2a00ff; '>'</span>)</pre>
+        </p>
+        <p>
+          Similairement, il est possible de sélectionner tous les éléments d'une classe donnée :
+          <pre style='color:#000000;background:#ffffff;'>$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>.uneClasse</span><span style='color:#2a00ff; '>'</span>)
+          </pre>
+          ou par exemple tous les titre <code>h2</code> :
+          <pre style='color:#000000;background:#ffffff;'>$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>h2</span><span style='color:#2a00ff; '>'</span>)</pre>
+        </p>
+        <p>
+          Les sélecteurs plus complexes de CSS sont également compris par jQuery. Exemples :
+          <pre style='color:#000000;background:#ffffff;'>$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>div .titre</span><span style='color:#2a00ff; '>'</span>)
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>div > p</span><span style='color:#2a00ff; '>'</span>)
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>span, code, abbr</span><span style='color:#2a00ff; '>'</span>)
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>input:checked</span><span style='color:#2a00ff; '>'</span>)</pre>
+        </p>
+      </section>
+      <h3>Fonctions simples</h3>
+        <section>
+          Parmi les fonctions les plus simples de jQuery, on trouve notemment <code>text()</code> et <code>html()</code>, qui permettent d'obtenir ou de définir le contenu (soit le contenu brut, soit le contenu HTML). Exemple :
+          <pre style='color:#000000;background:#ffffff;'>$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#contenu</span><span style='color:#2a00ff; '>'</span>).text(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>Hello, World!</span><span style='color:#2a00ff; '>'</span>);</pre>
+          définit que la phrase "Hello, World!" sera insérée dans le conteneur ayant l'ID <code>contenu</code>.
+          Pour obtenir la valeur d'un élément, il suffit d'utiliser la fonction sans paramètre :
+          <pre style='color:#000000;background:#ffffff;'>console.<span style='color:#7f0055; font-weight:bold; '>log</span>($(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#zone</span><span style='color:#2a00ff; '>'</span>).html());</pre>
+          Ici, tout le contenu HTML de l'élément ayant l'ID <code>zone</code> (texte et sous-éléments) sera affiché dans la console.
+        </section>
+        <h3>Afficher le code de la page</h3>
+        <section>
+          <p>
+            Le but de l'exercice est de créer un <code>div</code> qui contiendra l'intégralité du code HTML de la page en cours.
+          </p>
+          <p>
+            Indice : pour réaliser cet exercice, l'utilisation de <code>html()</code> est nécessaire afin d'obtenir le code, l'utilisation de <code>text()</code> est également nécessaire afin d'écrire le code sous forme de texte brut.
+          </p>
+        </section>
+        <h3>Correction</h3>
+        <section>
+          <p>
+            Dans le code HTML, il suffit d'ajouter dans le <code>body</code> :
+            <pre style='color:#000000;background:#ffffff;'><span style='color:#7f0055; '>&lt;</span><span style='color:#7f0055; font-weight:bold; '>div</span> id=<span style='color:#2a00ff; '>"code"</span><span style='color:#7f0055; '>></span><span style='color:#7f0055; '>&lt;/</span><span style='color:#7f0055; font-weight:bold; '>div</span><span style='color:#7f0055; '>></span></pre>
+          </p>
+          <p>
+            Le fichier JavaScript contiendra quant à lui le code suivant :
+            <pre style='color:#000000;background:#ffffff;'>$(<span style='color:#7f0055; font-weight:bold; '>function</span>() {
+  $(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#code</span><span style='color:#2a00ff; '>'</span>).text($(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>html</span><span style='color:#2a00ff; '>'</span>).html());
+});</pre>
+            ou par étapes détaillées :
+            <pre style='color:#000000;background:#ffffff;'><span style='color:#3f7f59; '>// On isole la balise "html"</span>
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>html</span><span style='color:#2a00ff; '>'</span>);
+<span style='color:#3f7f59; '>// On extrait son code</span>
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>html</span><span style='color:#2a00ff; '>'</span>).html();
+
+<span style='color:#3f7f59; '>// On isole l'élément ayant l'ID "code"</span>
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#code</span><span style='color:#2a00ff; '>'</span>)
+<span style='color:#3f7f59; '>// On insère le code trouvé plus tôt dans son texte</span>
+$(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#code</span><span style='color:#2a00ff; '>'</span>).text($(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>html</span><span style='color:#2a00ff; '>'</span>).html());
+
+<span style='color:#3f7f59; '>// le tout dans la fonction lancée lorsque le DOM est prêt</span>
+$(<span style='color:#7f0055; font-weight:bold; '>function</span>() {
+  $(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>#code</span><span style='color:#2a00ff; '>'</span>).text($(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>html</span><span style='color:#2a00ff; '>'</span>).html());
+});</pre>
+          </p>
+        </section>
     </section>
   </body>
 </html>

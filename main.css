@@ -1,11 +1,13 @@
 @import "elements.css";
+@import "section.css";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  width:800px;
+  font-family: 'Dosis', sans-serif;
   margin:auto;
   text-align: justify;
+  width:800px;
 }

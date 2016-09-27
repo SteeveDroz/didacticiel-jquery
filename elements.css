@@ -24,3 +24,20 @@ blockquote p {
 blockquote p:before {
   content: "\2014";
 }
+
+pre {
+  padding-left:100px;
+}
+
+.attention {
+  background: #fa8;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.attention:before {
+  content: '/!\\';
+  font-size: 150%;
+  text-decoration: underline;
+}

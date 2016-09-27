@@ -1,0 +1,4 @@
+h2:hover, h3:hover {
+  background: #eee;
+  cursor: pointer;
+}
