@@ -1,0 +1,11 @@
+@import "elements.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width:800px;
+  margin:auto;
+  text-align: justify;
+}
