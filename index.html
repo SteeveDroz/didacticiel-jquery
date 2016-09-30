@@ -86,7 +86,7 @@ $(<span style='color:#2a00ff; '>'</span><span style='color:#2a00ff; '>input:chec
             Indice : pour réaliser cet exercice, l'utilisation de <code>html()</code> est nécessaire afin d'obtenir le code, l'utilisation de <code>text()</code> est également nécessaire afin d'écrire le code sous forme de texte brut.
           </p>
         </section>
-        <h3>Correction</h3>
+        <h3 class="collapsed">Correction</h3>
         <section>
           <p>
             Dans le code HTML, il suffit d'ajouter dans le <code>body</code> :
@@ -114,6 +114,100 @@ $(<span style='color:#7f0055; font-weight:bold; '>function</span>() {
 });</pre>
           </p>
         </section>
+    </section>
+    <h2>Documentation</h2>
+    <section>
+      <p>
+        La <a href="http://api.jquery.com">documentation de jQuery</a> est très bien faite et bien organisée. Cependant, quelques notions sont nécessaires pour une compréhension approfondie des différentes pages.
+      </p>
+      <h3>jQuery et $</h3>
+      <section>
+        <p>
+          Dans la documentation, il n'est nulle part fait mention de la fonction magique de jQuery : <code>$</code>. En effet, cette fonction est un alias de la fonction <code>jQuery</code>. Ainsi, dans la doc, cette fonction est notée tantôt d'une manière, tantôt de l'autre.
+        </p>
+      </section>
+      <h3>jQuery.xyz() et .xyz()</h3>
+      <section>
+        <p>
+          Il existe deux sortes de fonctions présentées dans la documentation : celles qui commencent par <code>jQuery</code> et celles qui commencent par un point.
+        </p>
+        <p>
+          Les premières sont des fonctions globales qui sont utilisables tout le temps de la même manière. Par exemple, <code>jQuery.trim()</code> enlève les espaces au début et à la fin de n'importe quelle chaine de caractères. Bien évidemment, il est également possible de l'utiliser avec <code>$.trim()</code>.
+        </p>
+        <p>
+          Les fonctions débutant par un point sont en fait des méthodes d'éléments. Elles peuvent s'appliquer à un élément isolé grâce à un sélecteur ou à chaque éléments lorsque le sélecteur correspond à plus d'un élément du DOM. Par exemple, la fonction <code>.click()</code> permet de définir une action liée à un bouton. En utilisant <code>$('button').click()</code>, l'action portera sur tous les boutons du DOM.
+        </p>
+      </section>
+    </section>
+    <h2>Ça clique de partout</h2>
+    <section>
+      <p>
+        L'une des grandes utilisations de jQuery est la détection de clicks. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
+        <pre>$('#bouton1').click(function() {
+  alert('Vous avez cliqué sur le bouton 1 !');
+});</pre>
+        Et c'est tout ! Avouez que jQuery simplifie réellement la vie, non ?
+      </p>
+    </section>
+    <h3>Simuler un clic</h3>
+    <section>
+      <p>
+        Afin de simuler un clic de l'utilisateur, l'appel à la fonction <code>click()</code> sans paramètres suffit. Ainsi, la ligne suivante réalisera un clic sur le bouton 2 :
+        <pre>$('#bouton2').click();</pre>
+      </p>
+    </section>
+    <h3>Autres évènements</h3>
+    <section>
+      <p>
+        Il existe bien évidemment d'autres évènements que le clic. Tous fonctionnent de la même manière (définition et exécution). Écrire leur liste exhaustive ici n'est pas des plus utiles ou des plus intéressants, mais mettons toutefois l'accent sur quelques uns que voici :
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Évènement
+              </th>
+              <th>
+                Description
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <code>.focus()</code>
+              </td>
+              <td>
+                Positionnement du curseur sur un champ (<code>input</code> ou <code>textarea</code>)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>.blur()</code>
+              </td>
+              <td>
+                Pendant du précédent : perte du focus sur un champs
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>.hover()</code>
+              </td>
+              <td>
+                Survol de l'élémen par la souris
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>.keypress()</code>
+              </td>
+              <td>
+                Appui sur une touche du clavier (aussi <code>.keydown()</code> et <code>.keyUp()</code>)
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        Tous les évènements sont décrits sur <a href="http://api.jquery.com/category/events">api.jquery.com/category/events</a>.
+      </p>
     </section>
   </body>
 </html>
