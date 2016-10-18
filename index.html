@@ -191,68 +191,68 @@ $(function() {
         </pre>
         Et c'est tout ! Avouez que jQuery simplifie réellement la vie, non ?
       </p>
-    </section>
-    <h3>Simuler un clic</h3>
-    <section>
-      <p>
-        Afin de simuler un clic de l'utilisateur, l'appel à la fonction <code>click()</code> sans paramètres suffit. Ainsi, la ligne suivante réalisera un clic sur le bouton 2 :
-        <pre>
-          <code>$('#bouton2').click();</code>
-        </pre>
-      </p>
-    </section>
-    <h3>Autres évènements</h3>
-    <section>
-      <p>
-        Il existe bien évidemment d'autres évènements que le clic. Tous fonctionnent de la même manière (définition et exécution). Écrire leur liste exhaustive ici n'est pas des plus utiles ou des plus intéressants, mais mettons toutefois l'accent sur quelques uns que voici :
-        <table>
-          <thead>
-            <tr>
-              <th>
-                Évènement
-              </th>
-              <th>
-                Description
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <code>.focus()</code>
-              </td>
-              <td>
-                Positionnement du curseur sur un champ (<code>input</code> ou <code>textarea</code>)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>.blur()</code>
-              </td>
-              <td>
-                Pendant du précédent : perte du focus sur un champs
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>.hover()</code>
-              </td>
-              <td>
-                Survol de l'élémen par la souris
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>.keypress()</code>
-              </td>
-              <td>
-                Appui sur une touche du clavier (aussi <code>.keydown()</code> et <code>.keyUp()</code>)
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        Tous les évènements sont décrits sur <a href="http://api.jquery.com/category/events">api.jquery.com/category/events</a>.
-      </p>
+      <h3>Simuler un clic</h3>
+      <section>
+        <p>
+          Afin de simuler un clic de l'utilisateur, l'appel à la fonction <code>click()</code> sans paramètres suffit. Ainsi, la ligne suivante réalisera un clic sur le bouton 2 :
+          <pre>
+            <code>$('#bouton2').click();</code>
+          </pre>
+        </p>
+      </section>
+      <h3>Autres évènements</h3>
+      <section>
+        <p>
+          Il existe bien évidemment d'autres évènements que le clic. Tous fonctionnent de la même manière (définition et exécution). Écrire leur liste exhaustive ici n'est pas des plus utiles ou des plus intéressants, mais mettons toutefois l'accent sur quelques uns que voici :
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Évènement
+                </th>
+                <th>
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>.focus()</code>
+                </td>
+                <td>
+                  Positionnement du curseur sur un champ (<code>input</code> ou <code>textarea</code>)
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>.blur()</code>
+                </td>
+                <td>
+                  Pendant du précédent : perte du focus sur un champs
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>.hover()</code>
+                </td>
+                <td>
+                  Survol de l'élémen par la souris
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <code>.keypress()</code>
+                </td>
+                <td>
+                  Appui sur une touche du clavier (aussi <code>.keydown()</code> et <code>.keyUp()</code>)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          Tous les évènements sont décrits sur <a href="http://api.jquery.com/category/events">api.jquery.com/category/events</a>.
+        </p>
+      </section>
     </section>
     <h2>Ajax</h2>
     <section>
@@ -260,8 +260,57 @@ $(function() {
         Réaliser un site web avec la technologie <abbr title="Asynchronious JavaScript And XML">AJAX</abbr> sans jQuery, c'est ignoble ! Le problème principal est qu'Internet Explorer a une manière de faire différente des autres navigateurs, il faut donc développer son code AJAX à double. Ceux qui font du web ont l'habitude de pester contre IE car il est incompatible, mais il est à noter que dans le cas présent, l'AJAX étant une invention de Microsoft, on pourrait dire qu'il est le seul à faire les choses comme elles étaient prévues à la base.
       </p>
       <p>
-        Au-delà de ces considérations,
+        Au-delà de ces considérations, le problème de compatibilité est le même.
       </p>
+      <p>
+        Heureusement, jQuery fait tout seul la détection de la méthode à utilise et réalise le nécessaire afin de permettre un code simple et efficace.
+      </p>
+      <div class="attention">
+        Bien que la compatibilité soit de mise avec jQuery, il est nécessaire de bien choisir sa version.
+        <ul>
+          <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux naivgateurs.</li>
+          <li>jQuery-2.x est compatible avec les navigateurs les plus récents. Il est conseillé de continuer sur cette version si vous aviez commencé par l'utiliser.</li>
+          <li>jQuery-3.x est la suite logique de jQuery-2.x, mais quelques modifications le rendent non-rétrocompatible.</li>
+        </ul>
+        TL;DR : en tant que nouvel utilisateur, utilisez jQuery-1.x pour être compatible avec les vieilles versions de IE et jQuery-3.x si vous préférez les dernières fonctionnalités.
+      </div>
+      <p>
+        Pour utiliser l'AJAX avec jQuery, plusieurs méthodes sont possibles.
+      </p>
+      <h3>GET</h3>
+      <section>
+          L'envoi et la réception de données par la méthode <code>GET</code> se fait comme suit :
+        <pre>
+          <code>$.get(URL, DATA, SUCCESS)</code>
+        </pre>
+        Par exemple :
+        <pre>
+          <code>$.get('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
+  alert('La valeur a été mise à jour (code ' + data + ')')
+})</code>
+        </pre>
+        Ce code va envoyer une requête <code>GET</code> à la page <code>mise_a_jour_valeur.php</code> avec le paramètre <code>valeur=10</code> (équivalent de <code>mise_a_jour_valeur.php?valeur=10</code>). Si le script a fonctionné (s'il a retourné un état HTTP 200), un message d'alerte sera affiché.
+      </section>
+      <h3>POST</h3>
+      <section>
+        De manière parfaitement similaire, il est possible d'envoyer une requête par la méthode <code>POST</code> :
+        <pre>
+          <code>$.post(URL, DATA, SUCCESS)</code>
+        </pre>
+        Exemple :
+        <pre>
+          <code>$.get('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
+  alert('La valeur a été mise à jour (code ' + data + ')')
+})</code>
+        </pre>
+      </section>
+      <h3>Charger un élément</h3>
+      <section>
+        Un raccourci existe qui permet de charger le contenu d'une page directement dans un élément du DOM. Le principe général est le même, si ce n'est que ce n'est pas une fonction de $ mais de l'élément lui-même. Exemple :
+        <pre>
+          <code>$('#menu').load('menu_dynamique.php', { admin: true })</code>
+        </pre>
+      </section>
     </section>
   </body>
 </html>
