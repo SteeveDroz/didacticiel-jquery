@@ -5,4 +5,7 @@ $(function() {
   });
 
   $('h2.collapsed, h3.collapsed').click();
+
+  $('#jQueryVersion').text($(this).jquery)
+  $('#jQuerySource').load('didacticiel.js')
 });
