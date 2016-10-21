@@ -1,4 +1,13 @@
-h2:hover, h3:hover {
-  background: #eee;
+h2:not(.closed):hover, h3:not(.closed):hover {
+  background: #ccf;
   cursor: pointer;
+}
+
+.closed {
+  background: #aaf;
+  cursor: pointer;
+}
+
+.closed:hover {
+  background:#bbf;
 }

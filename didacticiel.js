@@ -1,7 +1,8 @@
 $(function() {
   $('h2, h3').click(function() {
     $(this).next('section').slideToggle();
+    $(this).toggleClass('closed');
   });
 
-  $('h2.collapsed, h3.collapsed').next('section').hide();
+  $('h2.collapsed, h3.collapsed').click();
 });
