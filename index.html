@@ -228,6 +228,15 @@ $('#elem').unwrap() // Désencapsule #elem de son parent
 $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
         </pre>
       </section>
+      <h3>Déplacement</h3>
+      <section>
+        Afin de déplacer un élément d'un endroit à l'autre du DOM, il suffit d'utiliser les méthodes de création, mais sur un élément déjà existant et non sur un nouvel élément. Exemple :
+        <pre>
+          <code>$('#elem').append($('#bougezMoi'))</code>
+        </pre>
+        Ceci déplacera l'élément <code>#bougezMoi</code> d'où qu'il se trouve vers <code>#elem</code>.
+      </section>
+    </section>
     <h2>Ça clique de partout</h2>
     <section>
       <p>
