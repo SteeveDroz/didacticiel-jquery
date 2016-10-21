@@ -29,17 +29,34 @@ pre {
   padding-left:100px;
 }
 
-.attention {
-  background: #fa8;
+.attention, .information {
   border-radius: 10px;
   font-weight: bold;
+  margin: 20px 0;
   padding: 10px;
+}
+
+.attention {
+  background: #fa8;
 }
 
 .attention:before {
   content: '/!\\';
   font-size: 150%;
   text-decoration: underline;
+}
+
+.information {
+  background: #aaf;
+}
+
+.information:before {
+  content: 'i';
+  background: #fff;
+  border-radius: 100%;
+  color: #00f;
+  font-size: 150%;
+  padding: 0 12px;
 }
 
 table {

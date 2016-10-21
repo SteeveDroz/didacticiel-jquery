@@ -35,7 +35,20 @@
           <code>&lt;script src="http://code.jquery.com/jquery-3.0.0.min.js">&lt;/script></code>
         </pre>
         <div class="attention">
-          Remplacez <code>3.0.0</code> par la version actuelle de jQuery que vous trouverez sur <a href="http://code.jquery.com">code.jquery.com</a>.
+          Remplacez <code>3.0.0</code> par la version actuelle de jQuery que vous trouverez sur <a href="http://code.jquery.com">code.jquery.com</a> :
+          <div style="position:relative;width:600px;height:320px;overflow:hidden;"><iframe style="position:absolute;top:-360px;left:-120px;width:1000px;height:1000px;" src="http://code.jquery.com" scrolling="no"></iframe></div>
+        </div>
+        <div class="attention">
+          Bien que la compatibilité soit de mise avec jQuery, il est nécessaire de bien choisir sa version.
+          <ul>
+            <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux naivgateurs.</li>
+            <li>jQuery-2.x est compatible avec les navigateurs les plus récents. Il est conseillé de continuer sur cette version si vous aviez commencé par l'utiliser.</li>
+            <li>jQuery-3.x est la suite logique de jQuery-2.x, mais quelques modifications le rendent non-rétrocompatible.</li>
+          </ul>
+          <abbr title="Too Long; Didn't Read">TL;DR</abbr> : en tant que nouvel utilisateur, utilisez jQuery-1.x pour être compatible avec les vieilles versions de IE et jQuery-3.x si vous préférez les dernières fonctionnalités.
+        </div>
+        <div class="information">
+          Si vous désirez néanmoins télécharger jQuery, il vous suffit de le charger depuis le fichier local que vous aurez téléchargé quelque part dans le répertoire de votre application plutôt que depuis le CDN. Pour ce faire, utilisez la ligne <code>&lt;script src="chemin/local/vers/jquery-3.0.0.min.js">&lt;/script></code>. Faites attention de bien télécharger la version minifiée (allégée) de jQuery.
         </div>
       </p>
       <p>
@@ -322,15 +335,6 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
       <p>
         Heureusement, jQuery fait tout seul la détection de la méthode à utilise et réalise le nécessaire afin de permettre un code simple et efficace.
       </p>
-      <div class="attention">
-        Bien que la compatibilité soit de mise avec jQuery, il est nécessaire de bien choisir sa version.
-        <ul>
-          <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux naivgateurs.</li>
-          <li>jQuery-2.x est compatible avec les navigateurs les plus récents. Il est conseillé de continuer sur cette version si vous aviez commencé par l'utiliser.</li>
-          <li>jQuery-3.x est la suite logique de jQuery-2.x, mais quelques modifications le rendent non-rétrocompatible.</li>
-        </ul>
-        <abbr title="Too Long; Didn't Read">TL;DR</abbr> : en tant que nouvel utilisateur, utilisez jQuery-1.x pour être compatible avec les vieilles versions de IE et jQuery-3.x si vous préférez les dernières fonctionnalités.
-      </div>
       <p>
         Pour utiliser l'AJAX avec jQuery, plusieurs méthodes sont possibles.
       </p>
