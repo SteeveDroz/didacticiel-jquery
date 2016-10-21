@@ -221,11 +221,11 @@ $(function() {
       <section>
         Pour créer un nouvel élément, deux méthodes sont possibles. Premièrement, on peut écrire le code HTML du nouvel élément et ajouter ce texte à un élément existant, comme ceci :
         <pre>
-          <code>$('#elem').append('&lt;div>nouveau&lt;/a>') // Ajout après les éléments existants
-$('#elem').prepend('&lt;div>nouveau&lt;/a>') // Ajout avant les éléments existants
-$('#elem').html('&lt;div>nouveau&lt;/a>') // Remplace les éléments existants
-$('#elem').replaceWith('&lt;div>nouveau&lt;/a>') // Remplace #elem par le div
-$('#elem').wrap('&lt;div>nouveau&lt;/a>') // Encapsule #elem dans le div</code>
+          <code>$('#elem').append('&lt;div>nouveau&lt;/div>')      // Ajout après les éléments existants
+$('#elem').prepend('&lt;div>nouveau&lt;/div>')     // Ajout avant les éléments existants
+$('#elem').html('&lt;div>nouveau&lt;/div>')        // Remplace les éléments existants
+$('#elem').replaceWith('&lt;div>nouveau&lt;/div>') // Remplace #elem par le div
+$('#elem').wrap('&lt;div>nouveau&lt;/div>')        // Encapsule #elem dans le div</code>
         </pre>
         L'autre possibilité est de créer un nouvel objet jQuery en utilisant la fonction <code>$</code> et en passant des paramètres de construction. Exemple :
         <pre>
@@ -233,13 +233,16 @@ $('#elem').wrap('&lt;div>nouveau&lt;/a>') // Encapsule #elem dans le div</code>
   id: 'nouveau',
   "class": 'element', // Entre guillemets, car class est un mot réservé
   text: 'Je suis un nouvel élément',
-  click: function(){alert('Vous avez cliqué !')},
-  style: 'border:1px solid black;'
+  css: {
+    border: '1px solid black',
+    fontFamily: 'serif' // camelCase au lieu de tirets
+  },
+  click: function(){alert('Vous avez cliqué !')}
 })</code>
         </pre>
         Ceci créera l'élément
         <pre>
-          <code>&lt;div id="nouveau" class="element" style="border:1px solid black;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/div></code>
+          <code>&lt;div id="nouveau" class="element" style="border:1px solid black;font-family:serif;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/div></code>
         </pre>
         Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
         <pre>
@@ -247,8 +250,11 @@ $('#elem').wrap('&lt;div>nouveau&lt;/a>') // Encapsule #elem dans le div</code>
   id: 'nouveau',
   "class": 'element',
   text: 'Je suis un nouvel élément',
-  click: function(){alert('Vous avez cliqué !')},
-  style: 'border:1px solid black;'
+  css: {
+    border: '1px solid black',
+    fontFamily: 'serif' // camelCase au lieu de tirets
+  },
+  click: function(){alert('Vous avez cliqué !')}
 }))</code>
         </pre>
       </section>
@@ -257,7 +263,7 @@ $('#elem').wrap('&lt;div>nouveau&lt;/a>') // Encapsule #elem dans le div</code>
         Quatre méthodes sont possible pour enlever un élément du DOM :
         <pre>
           <code>$('#elem').remove() // Supprime l'élément
-$('#elem').empty() // Supprime les éléments dans #elem (garde le texte)
+$('#elem').empty()  // Supprime les éléments dans #elem (garde le texte)
 $('#elem').unwrap() // Désencapsule #elem de son parent
 $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
         </pre>
@@ -274,7 +280,7 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
     <h2>Ça clique de partout</h2>
     <section>
       <p>
-        L'une des autres grandes utilisations de jQuery est la détection de clicks. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
+        L'une des autres grandes utilisations de jQuery est la détection de clics. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
         <pre>
           <code>$('#bouton1').click(function() {
   alert('Vous avez cliqué sur le bouton 1 !');
@@ -328,7 +334,7 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
                   <code>.hover()</code>
                 </td>
                 <td>
-                  Survol de l'élémen par la souris
+                  Survol de l'élément par la souris
                 </td>
               </tr>
               <tr>
@@ -348,7 +354,10 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
     <h2>Ajax</h2>
     <section>
       <p>
-        Réaliser un site web avec la technologie <abbr title="Asynchronious JavaScript And XML">AJAX</abbr> sans jQuery, c'est ignoble ! Le problème principal est qu'Internet Explorer a une manière de faire différente des autres navigateurs, il faut donc développer son code AJAX à double. Ceux qui font du web ont l'habitude de pester contre IE car il est incompatible, mais il est à noter que dans le cas présent, l'AJAX étant une invention de Microsoft, on pourrait dire qu'il est le seul à faire les choses comme elles étaient prévues à la base.
+        Réaliser un site web avec la technologie <abbr title="Asynchronious JavaScript And XML">AJAX</abbr> sans jQuery, c'est ignoble ! Le problème principal est qu'Internet Explorer a une manière de faire différente des autres navigateurs, il faut donc développer son code AJAX à double.
+        <div class="information">
+          Ceux qui font du web ont l'habitude de pester contre IE car il est incompatible, mais il est à noter que dans le cas présent, l'AJAX étant une invention de Microsoft, on pourrait dire qu'il est le seul à faire les choses comme elles étaient prévues à la base.
+        </div>
       </p>
       <p>
         Au-delà de ces considérations, le problème de compatibilité est le même.
@@ -371,7 +380,7 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
   alert('La valeur a été mise à jour (code ' + data + ')')
 })</code>
         </pre>
-        Ce code va envoyer une requête <code>GET</code> à la page <code>mise_a_jour_valeur.php</code> avec le paramètre <code>valeur=10</code> (équivalent de <code>mise_a_jour_valeur.php?valeur=10</code>). Si le script a fonctionné (s'il a retourné un état HTTP 200), un message d'alerte sera affiché.
+        Ce code va envoyer une requête <code>GET</code> à la page <code>mise_a_jour_valeur.php</code> avec le paramètre <code>valeur=10</code> (équivalent de <code>mise_a_jour_valeur.php?valeur=10</code>). Si le script a fonctionné (s'il a retourné un état HTTP 200), la fonction sera appelée, elle affichera un message d'alerte.
       </section>
       <h3>POST</h3>
       <section>
@@ -381,7 +390,7 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
         </pre>
         Exemple :
         <pre>
-          <code>$.get('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
+          <code>$.post('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
   alert('La valeur a été mise à jour (code ' + data + ')')
 })</code>
         </pre>
@@ -392,6 +401,11 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
         <pre>
           <code>$('#menu').load('menu_dynamique.php', { admin: true })</code>
         </pre>
+        Cette commande chargera le contenu de la page <code>menu_dynamique.php</code> à laquelle on aura passé le paramètre <code>admin=true</code> avec la méthode GET. Il est également possible de charger une portion de la page distante en précisant laquelle, comme ceci par exemple :
+        <pre>
+          <code>$('#listeDesPrix').load('toutes_les_listes.html #prix')</code>
+        </pre>
+        Cette commande chargera l'élément ayant l'ID <code>prix</code> du document <code>toutes_les_listes.html</code> dans l'élément ayant l'ID <code>listeDesPrix</code> du document courant.
       </section>
     </section>
   </body>
