@@ -58,12 +58,33 @@
         </pre>
       </p>
       <code>defer</code> signifie que le code sera chargé uniquement lorsque la page actuelle aura terminé de se charger. Si vous omettez cet attribut, votre script sera inutile car il agira sur des éléments qui n'existent pas encore.
-      <div class="attention">
+      <div class="information">
         Si vous préférez insérer votre code javascript directement dans le fichier HTML (ce qui n'est pas recommandé), alors <code>defer</code> est inutile, vous devez plutôt placer votre balise <code>script</code> juste avant la fermeture du <code>body</code>.
       </div>
     </section>
     <h2>Premier script</h2>
     <section>
+      <h3>Fonction principale</h3>
+      <section>
+        <p>
+          Le <abbr title="Document Object Model">DOM</abbr> est un arbre conceptuel créé d'après le code <abbr title="HyperText Markup Language">HTML</abbr>. C'est ce qui sera affiché par le navigateur. Les scripts ne peuvent travailler avec le DOM que si celui-ci a été généré dans son intégralité. jQuery offre donc une fonction qui sera appelée lorsque le DOM sera prêt et rien de ce qu'elle contient ne sera exécuté avant ce moment.
+        </p>
+        <p>
+          Pour appeler cette méthode, placez dans votre code JavaScript les lignes suivantes :
+          <pre>
+            <code>$(function() {
+    // Votre code ici
+  })</code>
+          </pre>
+          Tout code placé dans cette fonction sera exécuté au bon moment.
+          <div class="attention">
+            Vous trouverez dans la documentation l'appel aux fonctions <code>$(document).ready(function(){})</code>, voire <code>jQuery(document).ready(function(){})</code>. Ces écritures et celle présentée plus haut sont parfaitement équivalentes.
+          </div>
+          <div class="information">
+            Si votre ou vos codes contiennent plusieurs occurrences de <code>$(function(){})</code>, elles seront toutes appelées lorsque le DOM est prêt.
+          </div>
+        </p>
+      </section>
       <h3>Sélecteurs</h3>
       <section>
         <p>
@@ -92,7 +113,7 @@
           Les sélecteurs plus complexes de CSS sont également compris par jQuery. Exemples :
           <pre>
             <code>$('div .titre'); // Les éléments de classe "titre" contenus dans un div
-$('div > p'); // Les éléments p directement contenus dans un div
+$('div > p'); // Les éléments p enfants d'un div
 $('span, #zone, .content'); // Les éléments span,
                             // ou l'élément avec l'ID "zone"
                             // ou les éléments de la classe "content"
@@ -195,7 +216,7 @@ $(function() {
     </section>
     <h2>Modifier le DOM</h2>
     <section>
-      Le <abbr title="Document Object Model">DOM</abbr> peut être modifié par jQuery ; c'est même l'une de ses principales prérogatives. Les différents éléments peuvent être créés, supprimés ou déplacés comme suit :
+      Le DOM peut être modifié par jQuery ; c'est même l'une de ses principales prérogatives. Les différents éléments peuvent être créés, supprimés ou déplacés comme suit :
       <h3>Création</h3>
       <section>
         Pour créer un nouvel élément, deux méthodes sont possibles. Premièrement, on peut écrire le code HTML du nouvel élément et ajouter ce texte à un élément existant, comme ceci :
