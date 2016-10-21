@@ -218,6 +218,16 @@ $('#elem').wrap('&lt;div>nouveau&lt;/a>') // Encapsule #elem dans le div</code>
 }))</code>
         </pre>
       </section>
+      <h3>Suppression</h3>
+      <section>
+        Quatre méthodes sont possible pour enlever un élément du DOM :
+        <pre>
+          <code>$('#elem').remove() // Supprime l'élément
+$('#elem').empty() // Supprime les éléments dans #elem (garde le texte)
+$('#elem').unwrap() // Désencapsule #elem de son parent
+$('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
+        </pre>
+      </section>
     <h2>Ça clique de partout</h2>
     <section>
       <p>
