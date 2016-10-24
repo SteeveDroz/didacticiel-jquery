@@ -1,3 +1,8 @@
+h1 {
+  margin: 0;
+  padding-top: 10px;
+}
+
 h2:not(.closed):hover, h3:not(.closed):hover {
   background: #ccf;
   cursor: pointer;

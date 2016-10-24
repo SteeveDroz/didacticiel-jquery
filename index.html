@@ -13,410 +13,427 @@
     <script>hljs.initHighlightingOnLoad()</script>
   </head>
   <body>
-    <h1>Didacticiel jQuery</h1>
-    <h2>Introduction</h2>
-    <section>
-      <blockquote>
-        jQuery est une bibliothèque JavaScript rapide, compacte et riche. Elle réalise des choses comme le parcours et la manipulation de documents HTML, la gestion d'évènements, l'animation ou encore les requêtes <abbr title="Asynchronious JavaScript And XML">AJAX</abbr>, d'une manière très simple et avec une <abbr title="Application Programming Interface">API</abbr> fonctionnant sur une multitude de navigateurs. Avec une combinaison de versatilité et d'extensibilité, jQuery a changé la façon d'écrire du JavaScript pour des millions de personnes.
-        <p>
-          Page d'accueil jQuery, <a href="https://jquery.com">https://jquery.com</a>
-        </p>
-      </blockquote>
-    </section>
-    <h2>Installation</h2>
-    <section>
-      <p>
-        Bien qu'il soit possible d'installer jQuery, ceci n'est pas nécessaire. Nous pouvons pour cela utiliser un <abbr title="Content Delivery Network">CDN</abbr>, c'est-à-dire utiliser un dépôt distant sur lequel jQuery se trouve.
-      </p>
-
-      <p>
-        Dans le <code>head</code> de votre page HTML, insérez la ligne suivante :
-        <pre>
-          <code>&lt;script src="http://code.jquery.com/jquery-3.0.0.min.js">&lt;/script></code>
-        </pre>
-        <div class="attention">
-          Remplacez <code>3.0.0</code> par la version actuelle de jQuery que vous trouverez sur <a href="http://code.jquery.com">code.jquery.com</a> :
-          <div style="position:relative;width:600px;height:320px;overflow:hidden;"><iframe style="position:absolute;top:-360px;left:-120px;width:1000px;height:1000px;" src="http://code.jquery.com" scrolling="no"></iframe></div>
-        </div>
-        <div class="attention">
-          Bien que la compatibilité soit de mise avec jQuery, il est nécessaire de bien choisir sa version.
-          <ul>
-            <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux naivgateurs.</li>
-            <li>jQuery-2.x est compatible avec les navigateurs les plus récents. Il est conseillé de continuer sur cette version si vous aviez commencé par l'utiliser.</li>
-            <li>jQuery-3.x est la suite logique de jQuery-2.x, mais quelques modifications le rendent non-rétrocompatible.</li>
-          </ul>
-          <abbr title="Too Long; Didn't Read">TL;DR</abbr> : en tant que nouvel utilisateur, utilisez jQuery-1.x pour être compatible avec les vieilles versions de IE et jQuery-3.x si vous préférez les dernières fonctionnalités.
-        </div>
-        <div class="information">
-          Si vous désirez néanmoins télécharger jQuery, il vous suffit de le charger depuis le fichier local que vous aurez téléchargé quelque part dans le répertoire de votre application plutôt que depuis le CDN. Pour ce faire, utilisez la ligne <code>&lt;script src="chemin/local/vers/jquery-3.0.0.min.js">&lt;/script></code>. Faites attention de bien télécharger la version minifiée (allégée) de jQuery.
-        </div>
-      </p>
-      <p>
-        Toujours dans le <code>head</code>, ajoutez un appel à votre script JS avec :
-        <pre>
-          <code>&lt;script src="un-script.js" defer>&lt;/script></code>
-        </pre>
-      </p>
-      <code>defer</code> signifie que le code sera chargé uniquement lorsque la page actuelle aura terminé de se charger. Si vous omettez cet attribut, votre script sera inutile car il agira sur des éléments qui n'existent pas encore.
-      <div class="information">
-        Si vous préférez insérer votre code javascript directement dans le fichier HTML (ce qui n'est pas recommandé), alors <code>defer</code> est inutile, vous devez plutôt placer votre balise <code>script</code> juste avant la fermeture du <code>body</code>.
-      </div>
-    </section>
-    <h2>Premier script</h2>
-    <section>
-      <h3>Fonction principale</h3>
+    <div id="content">
+      <h1>Didacticiel jQuery</h1>
+      <h2>Introduction</h2>
+      <section>
+        <blockquote>
+          jQuery est une bibliothèque JavaScript rapide, compacte et riche. Elle réalise des choses comme le parcours et la manipulation de documents HTML, la gestion d'évènements, l'animation ou encore les requêtes <abbr title="Asynchronious JavaScript And XML">AJAX</abbr>, d'une manière très simple et avec une <abbr title="Application Programming Interface">API</abbr> fonctionnant sur une multitude de navigateurs. Avec une combinaison de versatilité et d'extensibilité, jQuery a changé la façon d'écrire du JavaScript pour des millions de personnes.
+          <p>
+            Page d'accueil jQuery, <a href="https://jquery.com">https://jquery.com</a>
+          </p>
+        </blockquote>
+      </section>
+      <h2>Installation</h2>
       <section>
         <p>
-          Le <abbr title="Document Object Model">DOM</abbr> est un arbre conceptuel créé d'après le code <abbr title="HyperText Markup Language">HTML</abbr>. C'est ce qui sera affiché par le navigateur. Les scripts ne peuvent travailler avec le DOM que si celui-ci a été généré dans son intégralité. jQuery offre donc une fonction qui sera appelée lorsque le DOM sera prêt et rien de ce qu'elle contient ne sera exécuté avant ce moment.
+          Bien qu'il soit possible d'installer jQuery, ceci n'est pas nécessaire. Nous pouvons pour cela utiliser un <abbr title="Content Delivery Network">CDN</abbr>, c'est-à-dire utiliser un dépôt distant sur lequel jQuery se trouve.
         </p>
+
         <p>
-          Pour appeler cette méthode, placez dans votre code JavaScript les lignes suivantes :
+          Dans le <code>head</code> de votre page HTML, insérez la ligne suivante :
           <pre>
-            <code>$(function() {
-    // Votre code ici
-  })</code>
+            <code>&lt;script src="http://code.jquery.com/jquery-3.0.0.min.js">&lt;/script></code>
           </pre>
-          Tout code placé dans cette fonction sera exécuté au bon moment.
           <div class="attention">
-            Vous trouverez dans la documentation l'appel aux fonctions <code>$(document).ready(function(){})</code>, voire <code>jQuery(document).ready(function(){})</code>. Ces écritures et celle présentée plus haut sont parfaitement équivalentes.
+            Remplacez <code>3.0.0</code> par la version actuelle de jQuery que vous trouverez sur <a href="http://code.jquery.com">code.jquery.com</a> :
+            <div style="position:relative;width:600px;height:320px;overflow:hidden;"><iframe style="position:absolute;top:-360px;left:-120px;width:1000px;height:1000px;" src="http://code.jquery.com" scrolling="no"></iframe></div>
+          </div>
+          <div class="attention">
+            Bien que la compatibilité soit de mise avec jQuery, il est nécessaire de bien choisir sa version.
+            <ul>
+              <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux naivgateurs.</li>
+              <li>jQuery-2.x est compatible avec les navigateurs les plus récents. Il est conseillé de continuer sur cette version si vous aviez commencé par l'utiliser.</li>
+              <li>jQuery-3.x est la suite logique de jQuery-2.x, mais quelques modifications le rendent non-rétrocompatible.</li>
+            </ul>
+            <abbr title="Too Long; Didn't Read">TL;DR</abbr> : en tant que nouvel utilisateur, utilisez jQuery-1.x pour être compatible avec les vieilles versions de IE et jQuery-3.x si vous préférez les dernières fonctionnalités.
           </div>
           <div class="information">
-            Si votre ou vos codes contiennent plusieurs occurrences de <code>$(function(){})</code>, elles seront toutes appelées lorsque le DOM est prêt.
+            Si vous désirez néanmoins télécharger jQuery, il vous suffit de le charger depuis le fichier local que vous aurez téléchargé quelque part dans le répertoire de votre application plutôt que depuis le CDN. Pour ce faire, utilisez la ligne <code>&lt;script src="chemin/local/vers/jquery-3.0.0.min.js">&lt;/script></code>. Faites attention de bien télécharger la version minifiée (allégée) de jQuery.
           </div>
         </p>
+        <p>
+          Toujours dans le <code>head</code>, ajoutez un appel à votre script JS avec :
+          <pre>
+            <code>&lt;script src="un-script.js" defer>&lt;/script></code>
+          </pre>
+        </p>
+        <code>defer</code> signifie que le code sera chargé uniquement lorsque la page actuelle aura terminé de se charger. Si vous omettez cet attribut, votre script sera inutile car il agira sur des éléments qui n'existent pas encore.
+        <div class="information">
+          Si vous préférez insérer votre code javascript directement dans le fichier HTML (ce qui n'est pas recommandé), alors <code>defer</code> est inutile, vous devez plutôt placer votre balise <code>script</code> juste avant la fermeture du <code>body</code>.
+        </div>
       </section>
-      <h3>Sélecteurs</h3>
+      <h2>Premier script</h2>
       <section>
-        <p>
-          jQuery, c'est avant tout des sélecteurs. Lorsqu'on désire sélectionner un élément en JavaScript, par exemple par son ID, on utilise
-          <pre>
-            <code>document.findElementById('unId')</code>
-          </pre>
-        </p>
-        <p>
-          jQuery a décidé d'utiliser les mêmes sélecteurs que le CSS. Ainsi, pour obtenir un élément par son ID, on utilise
-          <pre>
-            <code>$('#unId')</code>
-          </pre>
-        </p>
-        <p>
-          Similairement, il est possible de sélectionner tous les éléments d'une classe donnée :
-          <pre>
-            <code>$('.uneClasse')</code>
-          </pre>
-          ou par exemple tous les titre <code>h2</code> :
-          <pre>
-            <code>$('h2')</code>
-          </pre>
-        </p>
-        <p>
-          Les sélecteurs plus complexes de CSS sont également compris par jQuery. Exemples :
-          <pre>
-            <code>$('div .titre'); // Les éléments de classe "titre" contenus dans un div
-$('div > p'); // Les éléments p enfants d'un div
-$('span, #zone, .content'); // Les éléments span,
-                            // ou l'élément avec l'ID "zone"
-                            // ou les éléments de la classe "content"
-$('input:checked'); // Les inputs qui sont cochés</code>
-          </pre>
-        </p>
-      </section>
-      <h3>Fonctions simples</h3>
+        <h3>Fonction principale</h3>
         <section>
           <p>
-            Parmi les fonctions les plus simples de jQuery, on trouve notemment <code>text()</code> et <code>html()</code>, qui permettent d'obtenir ou de définir le contenu (soit le contenu brut, soit le contenu HTML). Exemple :
-            <pre>
-              <code>$('#contenu').text('Hello, World!');</code>
-            </pre>
-            définit que la phrase "Hello, World!" sera insérée dans le conteneur ayant l'ID <code>contenu</code>.
-            Pour obtenir la valeur d'un élément, il suffit d'utiliser la fonction sans paramètre :
-            <pre>
-              <code>console.log($('#zone').html());</code>
-            </pre>
-            Ici, tout le contenu HTML de l'élément ayant l'ID <code>zone</code> (texte et sous-éléments) sera affiché dans la console.
+            Le <abbr title="Document Object Model">DOM</abbr> est un arbre conceptuel créé d'après le code <abbr title="HyperText Markup Language">HTML</abbr>. C'est ce qui sera affiché par le navigateur. Les scripts ne peuvent travailler avec le DOM que si celui-ci a été généré dans son intégralité. jQuery offre donc une fonction qui sera appelée lorsque le DOM sera prêt et rien de ce qu'elle contient ne sera exécuté avant ce moment.
           </p>
           <p>
-            Lorsqu'on désire obtenir le contenu d'un <code>input</code>, il n'est pas possible d'utiliser <code>text</code> ou <code>html</code>, car ce n'est pas du contenu, mais une valeur d'attribut. Au lieu de cela, il faut passer par la méthode <code>val</code> qui s'utilise de la même manière que les deux autres.
-          </p>
-          <p>
-            Exemple :
-            <pre>
-              <code>var prenom = $('#prenom').val();
-$('#prenomCopie').val(prenom);</code>
-            </pre>
-          </p>
-        </section>
-        <h3>Afficher le code de la page</h3>
-        <section>
-          <p>
-            Le but de l'exercice est de créer un <code>div</code> qui contiendra l'intégralité du code HTML de la page en cours.
-          </p>
-          <p>
-            Indice : pour réaliser cet exercice, l'utilisation de <code>html()</code> est nécessaire afin d'obtenir le code, l'utilisation de <code>text()</code> est également nécessaire afin d'écrire le code sous forme de texte brut.
-          </p>
-        </section>
-        <h3 class="collapsed">Correction</h3>
-        <section>
-          <p>
-            Dans le code HTML, il suffit d'ajouter dans le <code>body</code> :
-            <pre>
-              <code>&lt;div id="code">&lt;/div></code>
-            </pre>
-          </p>
-          <p>
-            Le fichier JavaScript contiendra quant à lui le code suivant :
+            Pour appeler cette méthode, placez dans votre code JavaScript les lignes suivantes :
             <pre>
               <code>$(function() {
-  $('#code').text($('html').html());
-});</code>
+      // Votre code ici
+    })</code>
             </pre>
-            Explications par étapes détaillées :
+            Tout code placé dans cette fonction sera exécuté au bon moment.
+            <div class="attention">
+              Vous trouverez dans la documentation l'appel aux fonctions <code>$(document).ready(function(){})</code>, voire <code>jQuery(document).ready(function(){})</code>. Ces écritures et celle présentée plus haut sont parfaitement équivalentes.
+            </div>
+            <div class="information">
+              Si votre ou vos codes contiennent plusieurs occurrences de <code>$(function(){})</code>, elles seront toutes appelées lorsque le DOM est prêt.
+            </div>
+          </p>
+        </section>
+        <h3>Sélecteurs</h3>
+        <section>
+          <p>
+            jQuery, c'est avant tout des sélecteurs. Lorsqu'on désire sélectionner un élément en JavaScript, par exemple par son ID, on utilise
             <pre>
-              <code>// On isole la balise "html"
-$('html');
-// On extrait son code
-$('html').html();
-
-// On isole l'élément ayant l'ID "code"
-$('#code')
-// On insère le code trouvé plus tôt dans son texte
-$('#code').text($('html').html());
-
-// le tout dans la fonction lancée lorsque le DOM est prêt
-$(function() {
-  $('#code').text($('html').html());
-});</code>
+              <code>document.findElementById('unId')</code>
+            </pre>
+          </p>
+          <p>
+            jQuery a décidé d'utiliser les mêmes sélecteurs que le CSS. Ainsi, pour obtenir un élément par son ID, on utilise
+            <pre>
+              <code>$('#unId')</code>
+            </pre>
+          </p>
+          <p>
+            Similairement, il est possible de sélectionner tous les éléments d'une classe donnée :
+            <pre>
+              <code>$('.uneClasse')</code>
+            </pre>
+            ou par exemple tous les titre <code>h2</code> :
+            <pre>
+              <code>$('h2')</code>
+            </pre>
+          </p>
+          <p>
+            Les sélecteurs plus complexes de CSS sont également compris par jQuery. Exemples :
+            <pre>
+              <code>$('div .titre'); // Les éléments de classe "titre" contenus dans un div
+  $('div > p'); // Les éléments p enfants d'un div
+  $('span, #zone, .content'); // Les éléments span,
+                              // ou l'élément avec l'ID "zone"
+                              // ou les éléments de la classe "content"
+  $('input:checked'); // Les inputs qui sont cochés</code>
             </pre>
           </p>
         </section>
-    </section>
-    <h2>Documentation</h2>
-    <section>
-      <p>
-        La <a href="http://api.jquery.com">documentation de jQuery</a> est très bien faite et bien organisée. Cependant, quelques notions sont nécessaires pour une compréhension approfondie des différentes pages.
-      </p>
-      <h3>jQuery et $</h3>
+        <h3>Fonctions simples</h3>
+          <section>
+            <p>
+              Parmi les fonctions les plus simples de jQuery, on trouve notemment <code>text()</code> et <code>html()</code>, qui permettent d'obtenir ou de définir le contenu (soit le contenu brut, soit le contenu HTML). Exemple :
+              <pre>
+                <code>$('#contenu').text('Hello, World!');</code>
+              </pre>
+              définit que la phrase "Hello, World!" sera insérée dans le conteneur ayant l'ID <code>contenu</code>.
+              Pour obtenir la valeur d'un élément, il suffit d'utiliser la fonction sans paramètre :
+              <pre>
+                <code>console.log($('#zone').html());</code>
+              </pre>
+              Ici, tout le contenu HTML de l'élément ayant l'ID <code>zone</code> (texte et sous-éléments) sera affiché dans la console.
+            </p>
+            <p>
+              Lorsqu'on désire obtenir le contenu d'un <code>input</code>, il n'est pas possible d'utiliser <code>text</code> ou <code>html</code>, car ce n'est pas du contenu, mais une valeur d'attribut. Au lieu de cela, il faut passer par la méthode <code>val</code> qui s'utilise de la même manière que les deux autres.
+            </p>
+            <p>
+              Exemple :
+              <pre>
+                <code>var prenom = $('#prenom').val();
+  $('#prenomCopie').val(prenom);</code>
+              </pre>
+            </p>
+          </section>
+          <h3>Afficher le code de la page</h3>
+          <section>
+            <p>
+              Le but de l'exercice est de créer un <code>div</code> qui contiendra l'intégralité du code HTML de la page en cours.
+            </p>
+            <p>
+              Indice : pour réaliser cet exercice, l'utilisation de <code>html()</code> est nécessaire afin d'obtenir le code, l'utilisation de <code>text()</code> est également nécessaire afin d'écrire le code sous forme de texte brut.
+            </p>
+          </section>
+          <h3 class="collapsed">Correction</h3>
+          <section>
+            <p>
+              Dans le code HTML, il suffit d'ajouter dans le <code>body</code> :
+              <pre>
+                <code>&lt;div id="code">&lt;/div></code>
+              </pre>
+            </p>
+            <p>
+              Le fichier JavaScript contiendra quant à lui le code suivant :
+              <pre>
+                <code>$(function() {
+    $('#code').text($('html').html());
+  });</code>
+              </pre>
+              Explications par étapes détaillées :
+              <pre>
+                <code>// On isole la balise "html"
+  $('html');
+  // On extrait son code
+  $('html').html();
+
+  // On isole l'élément ayant l'ID "code"
+  $('#code')
+  // On insère le code trouvé plus tôt dans son texte
+  $('#code').text($('html').html());
+
+  // le tout dans la fonction lancée lorsque le DOM est prêt
+  $(function() {
+    $('#code').text($('html').html());
+  });</code>
+              </pre>
+            </p>
+          </section>
+      </section>
+      <h2>Documentation</h2>
       <section>
         <p>
-          Dans la documentation, la fonction <code>$</code> n'est en apparence pas décrite. En effet, cette fonction est un alias de la fonction <code>jQuery</code>. Ainsi, dans la doc, cette fonction est notée tantôt d'une manière, tantôt de l'autre.
+          La <a href="http://api.jquery.com">documentation de jQuery</a> est très bien faite et bien organisée. Cependant, quelques notions sont nécessaires pour une compréhension approfondie des différentes pages.
         </p>
+        <h3>jQuery et $</h3>
+        <section>
+          <p>
+            Dans la documentation, la fonction <code>$</code> n'est en apparence pas décrite. En effet, cette fonction est un alias de la fonction <code>jQuery</code>. Ainsi, dans la doc, cette fonction est notée tantôt d'une manière, tantôt de l'autre.
+          </p>
+        </section>
+        <h3>jQuery.xyz() et .xyz()</h3>
+        <section>
+          <p>
+            Il existe deux sortes de fonctions présentées dans la documentation : celles qui commencent par <code>jQuery</code> et celles qui commencent par un point.
+          </p>
+          <p>
+            Les premières sont des fonctions globales qui sont utilisables tout le temps de la même manière. Par exemple, <code>jQuery.trim()</code> enlève les espaces au début et à la fin de n'importe quelle chaine de caractères. Bien évidemment, il est également possible de l'utiliser avec son alias : <code>$.trim()</code>.
+          </p>
+          <p>
+            Les fonctions débutant par un point sont en fait des méthodes d'éléments. Elles peuvent s'appliquer à un élément isolé grâce à un sélecteur ou à chaque éléments lorsque le sélecteur correspond à plus d'un élément du DOM. Par exemple, la fonction <code>.click()</code> permet de définir une action liée à un bouton. En utilisant <code>$('button').click()</code>, l'action portera sur tous les boutons du DOM.
+          </p>
+        </section>
       </section>
-      <h3>jQuery.xyz() et .xyz()</h3>
+      <h2>Modifier le DOM</h2>
       <section>
-        <p>
-          Il existe deux sortes de fonctions présentées dans la documentation : celles qui commencent par <code>jQuery</code> et celles qui commencent par un point.
-        </p>
-        <p>
-          Les premières sont des fonctions globales qui sont utilisables tout le temps de la même manière. Par exemple, <code>jQuery.trim()</code> enlève les espaces au début et à la fin de n'importe quelle chaine de caractères. Bien évidemment, il est également possible de l'utiliser avec son alias : <code>$.trim()</code>.
-        </p>
-        <p>
-          Les fonctions débutant par un point sont en fait des méthodes d'éléments. Elles peuvent s'appliquer à un élément isolé grâce à un sélecteur ou à chaque éléments lorsque le sélecteur correspond à plus d'un élément du DOM. Par exemple, la fonction <code>.click()</code> permet de définir une action liée à un bouton. En utilisant <code>$('button').click()</code>, l'action portera sur tous les boutons du DOM.
-        </p>
-      </section>
-    </section>
-    <h2>Modifier le DOM</h2>
-    <section>
-      Le DOM peut être modifié par jQuery ; c'est même l'une de ses principales prérogatives. Les différents éléments peuvent être créés, supprimés ou déplacés comme suit :
-      <h3>Création</h3>
-      <section>
-        Pour créer un nouvel élément, deux méthodes sont possibles. Premièrement, on peut écrire le code HTML du nouvel élément et ajouter ce texte à un élément existant, comme ceci :
-        <pre>
-          <code>$('#elem').append('&lt;div>nouveau&lt;/div>')      // Ajout après les éléments existants
-$('#elem').prepend('&lt;div>nouveau&lt;/div>')     // Ajout avant les éléments existants
-$('#elem').html('&lt;div>nouveau&lt;/div>')        // Remplace les éléments existants
-$('#elem').replaceWith('&lt;div>nouveau&lt;/div>') // Remplace #elem par le div
-$('#elem').wrap('&lt;div>nouveau&lt;/div>')        // Encapsule #elem dans le div</code>
-        </pre>
-        L'autre possibilité est de créer un nouvel objet jQuery en utilisant la fonction <code>$</code> et en passant des paramètres de construction. Exemple :
-        <pre>
-          <code>let nouvelElement = $('&lt;div>', {
-  id: 'nouveau',
-  "class": 'element', // Entre guillemets, car class est un mot réservé
-  text: 'Je suis un nouvel élément',
-  css: {
-    border: '1px solid black',
-    fontFamily: 'serif' // camelCase au lieu de tirets
-  },
-  click: function(){alert('Vous avez cliqué !')}
-})</code>
-        </pre>
-        Ceci créera l'élément
-        <pre>
-          <code>&lt;div id="nouveau" class="element" style="border:1px solid black;font-family:serif;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/div></code>
-        </pre>
-        Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
-        <pre>
-          <code>$('#elem').append($('&lt;div>', {
-  id: 'nouveau',
-  "class": 'element',
-  text: 'Je suis un nouvel élément',
-  css: {
-    border: '1px solid black',
-    fontFamily: 'serif' // camelCase au lieu de tirets
-  },
-  click: function(){alert('Vous avez cliqué !')}
-}))</code>
-        </pre>
-      </section>
-      <h3>Suppression</h3>
-      <section>
-        Quatre méthodes sont possible pour enlever un élément du DOM :
-        <pre>
-          <code>$('#elem').remove() // Supprime l'élément
-$('#elem').empty()  // Supprime les éléments dans #elem (garde le texte)
-$('#elem').unwrap() // Désencapsule #elem de son parent
-$('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
-        </pre>
-      </section>
-      <h3>Déplacement</h3>
-      <section>
-        Afin de déplacer un élément d'un endroit à l'autre du DOM, il suffit d'utiliser les méthodes de création, mais sur un élément déjà existant et non sur un nouvel élément. Exemple :
-        <pre>
-          <code>$('#elem').append($('#bougezMoi'))</code>
-        </pre>
-        Ceci déplacera l'élément <code>#bougezMoi</code> d'où qu'il se trouve vers <code>#elem</code>.
-      </section>
-    </section>
-    <h2>Ça clique de partout</h2>
-    <section>
-      <p>
-        L'une des autres grandes utilisations de jQuery est la détection de clics. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
-        <pre>
-          <code>$('#bouton1').click(function() {
-  alert('Vous avez cliqué sur le bouton 1 !');
-});</code>
-        </pre>
-        Et c'est tout ! Avouez que jQuery simplifie réellement la vie, non ?
-      </p>
-      <h3>Simuler un clic</h3>
-      <section>
-        <p>
-          Afin de simuler un clic de l'utilisateur, l'appel à la fonction <code>click()</code> sans paramètres suffit. Ainsi, la ligne suivante réalisera un clic sur le bouton 2 :
+        Le DOM peut être modifié par jQuery ; c'est même l'une de ses principales prérogatives. Les différents éléments peuvent être créés, supprimés ou déplacés comme suit :
+        <h3>Création</h3>
+        <section>
+          Pour créer un nouvel élément, deux méthodes sont possibles. Premièrement, on peut écrire le code HTML du nouvel élément et ajouter ce texte à un élément existant, comme ceci :
           <pre>
-            <code>$('#bouton2').click();</code>
+            <code>$('#elem').append('&lt;div>nouveau&lt;/div>')      // Ajout après les éléments existants
+  $('#elem').prepend('&lt;div>nouveau&lt;/div>')     // Ajout avant les éléments existants
+  $('#elem').html('&lt;div>nouveau&lt;/div>')        // Remplace les éléments existants
+  $('#elem').replaceWith('&lt;div>nouveau&lt;/div>') // Remplace #elem par le div
+  $('#elem').wrap('&lt;div>nouveau&lt;/div>')        // Encapsule #elem dans le div</code>
           </pre>
-        </p>
+          L'autre possibilité est de créer un nouvel objet jQuery en utilisant la fonction <code>$</code> et en passant des paramètres de construction. Exemple :
+          <pre>
+            <code>let nouvelElement = $('&lt;div>', {
+    id: 'nouveau',
+    "class": 'element', // Entre guillemets, car class est un mot réservé
+    text: 'Je suis un nouvel élément',
+    css: {
+      border: '1px solid black',
+      fontFamily: 'serif' // camelCase au lieu de tirets
+    },
+    click: function(){alert('Vous avez cliqué !')}
+  })</code>
+          </pre>
+          Ceci créera l'élément
+          <pre>
+            <code>&lt;div id="nouveau" class="element" style="border:1px solid black;font-family:serif;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/div></code>
+          </pre>
+          Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
+          <pre>
+            <code>$('#elem').append($('&lt;div>', {
+    id: 'nouveau',
+    "class": 'element',
+    text: 'Je suis un nouvel élément',
+    css: {
+      border: '1px solid black',
+      fontFamily: 'serif' // camelCase au lieu de tirets
+    },
+    click: function(){alert('Vous avez cliqué !')}
+  }))</code>
+          </pre>
+        </section>
+        <h3>Suppression</h3>
+        <section>
+          Quatre méthodes sont possible pour enlever un élément du DOM :
+          <pre>
+            <code>$('#elem').remove() // Supprime l'élément
+  $('#elem').empty()  // Supprime les éléments dans #elem (garde le texte)
+  $('#elem').unwrap() // Désencapsule #elem de son parent
+  $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
+          </pre>
+        </section>
+        <h3>Déplacement</h3>
+        <section>
+          Afin de déplacer un élément d'un endroit à l'autre du DOM, il suffit d'utiliser les méthodes de création, mais sur un élément déjà existant et non sur un nouvel élément. Exemple :
+          <pre>
+            <code>$('#elem').append($('#bougezMoi'))</code>
+          </pre>
+          Ceci déplacera l'élément <code>#bougezMoi</code> d'où qu'il se trouve vers <code>#elem</code>.
+        </section>
       </section>
-      <h3>Autres évènements</h3>
+      <h2>Ça clique de partout</h2>
       <section>
         <p>
-          Il existe bien évidemment d'autres évènements que le clic. Tous fonctionnent de la même manière (définition et exécution). Écrire leur liste exhaustive ici n'est pas des plus utiles ou des plus intéressants, mais mettons toutefois l'accent sur quelques uns que voici :
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Évènement
-                </th>
-                <th>
-                  Description
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <code>.focus()</code>
-                </td>
-                <td>
-                  Positionnement du curseur sur un champ (<code>input</code> ou <code>textarea</code>)
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>.blur()</code>
-                </td>
-                <td>
-                  Pendant du précédent : perte du focus sur un champs
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>.hover()</code>
-                </td>
-                <td>
-                  Survol de l'élément par la souris
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <code>.keypress()</code>
-                </td>
-                <td>
-                  Appui sur une touche du clavier (aussi <code>.keydown()</code> et <code>.keyUp()</code>)
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          Tous les évènements sont décrits sur <a href="http://api.jquery.com/category/events">api.jquery.com/category/events</a>.
+          L'une des autres grandes utilisations de jQuery est la détection de clics. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
+          <pre>
+            <code>$('#bouton1').click(function() {
+    alert('Vous avez cliqué sur le bouton 1 !');
+  });</code>
+          </pre>
+          Et c'est tout ! Avouez que jQuery simplifie réellement la vie, non ?
         </p>
+        <h3>Simuler un clic</h3>
+        <section>
+          <p>
+            Afin de simuler un clic de l'utilisateur, l'appel à la fonction <code>click()</code> sans paramètres suffit. Ainsi, la ligne suivante réalisera un clic sur le bouton 2 :
+            <pre>
+              <code>$('#bouton2').click();</code>
+            </pre>
+          </p>
+        </section>
+        <h3>Autres évènements</h3>
+        <section>
+          <p>
+            Il existe bien évidemment d'autres évènements que le clic. Tous fonctionnent de la même manière (définition et exécution). Écrire leur liste exhaustive ici n'est pas des plus utiles ou des plus intéressants, mais mettons toutefois l'accent sur quelques uns que voici :
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    Évènement
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <code>.focus()</code>
+                  </td>
+                  <td>
+                    Positionnement du curseur sur un champ (<code>input</code> ou <code>textarea</code>)
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>.blur()</code>
+                  </td>
+                  <td>
+                    Pendant du précédent : perte du focus sur un champs
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>.hover()</code>
+                  </td>
+                  <td>
+                    Survol de l'élément par la souris
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>.keypress()</code>
+                  </td>
+                  <td>
+                    Appui sur une touche du clavier (aussi <code>.keydown()</code> et <code>.keyUp()</code>)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            Tous les évènements sont décrits sur <a href="http://api.jquery.com/category/events">api.jquery.com/category/events</a>.
+          </p>
+        </section>
       </section>
-    </section>
-    <h2>Ajax</h2>
-    <section>
-      <p>
-        Réaliser un site web avec la technologie <abbr title="Asynchronious JavaScript And XML">AJAX</abbr> sans jQuery, c'est ignoble ! Le problème principal est qu'Internet Explorer a une manière de faire différente des autres navigateurs, il faut donc développer son code AJAX à double.
-        <div class="information">
-          Ceux qui font du web ont l'habitude de pester contre IE car il est incompatible, mais il est à noter que dans le cas présent, l'AJAX étant une invention de Microsoft, on pourrait dire qu'il est le seul à faire les choses comme elles étaient prévues à la base.
-        </div>
-      </p>
-      <p>
-        Au-delà de ces considérations, le problème de compatibilité est le même.
-      </p>
-      <p>
-        Heureusement, jQuery fait tout seul la détection de la méthode à utilise et réalise le nécessaire afin de permettre un code simple et efficace.
-      </p>
-      <p>
-        Pour utiliser l'AJAX avec jQuery, plusieurs méthodes sont possibles.
-      </p>
-      <h3>GET</h3>
+      <h2>Ajax</h2>
       <section>
-          L'envoi et la réception de données par la méthode <code>GET</code> se fait comme suit :
-        <pre>
-          <code>$.get(URL, DATA, SUCCESS)</code>
-        </pre>
-        Par exemple :
-        <pre>
-          <code>$.get('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
-  alert('La valeur a été mise à jour (code ' + data + ')')
-})</code>
-        </pre>
-        Ce code va envoyer une requête <code>GET</code> à la page <code>mise_a_jour_valeur.php</code> avec le paramètre <code>valeur=10</code> (équivalent de <code>mise_a_jour_valeur.php?valeur=10</code>). Si le script a fonctionné (s'il a retourné un état HTTP 200), la fonction sera appelée, elle affichera un message d'alerte.
+        <p>
+          Réaliser un site web avec la technologie <abbr title="Asynchronious JavaScript And XML">AJAX</abbr> sans jQuery, c'est ignoble ! Le problème principal est qu'Internet Explorer a une manière de faire différente des autres navigateurs, il faut donc développer son code AJAX à double.
+          <div class="information">
+            Ceux qui font du web ont l'habitude de pester contre IE car il est incompatible, mais il est à noter que dans le cas présent, l'AJAX étant une invention de Microsoft, on pourrait dire qu'il est le seul à faire les choses comme elles étaient prévues à la base.
+          </div>
+        </p>
+        <p>
+          Au-delà de ces considérations, le problème de compatibilité est le même.
+        </p>
+        <p>
+          Heureusement, jQuery fait tout seul la détection de la méthode à utilise et réalise le nécessaire afin de permettre un code simple et efficace.
+        </p>
+        <p>
+          Pour utiliser l'AJAX avec jQuery, plusieurs méthodes sont possibles.
+        </p>
+        <h3>GET</h3>
+        <section>
+            L'envoi et la réception de données par la méthode <code>GET</code> se fait comme suit :
+          <pre>
+            <code>$.get(URL, DATA, SUCCESS)</code>
+          </pre>
+          Par exemple :
+          <pre>
+            <code>$.get('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
+    alert('La valeur a été mise à jour (code ' + data + ')')
+  })</code>
+          </pre>
+          Ce code va envoyer une requête <code>GET</code> à la page <code>mise_a_jour_valeur.php</code> avec le paramètre <code>valeur=10</code> (équivalent de <code>mise_a_jour_valeur.php?valeur=10</code>). Si le script a fonctionné (s'il a retourné un état HTTP 200), la fonction sera appelée, elle affichera un message d'alerte.
+        </section>
+        <h3>POST</h3>
+        <section>
+          De manière parfaitement similaire, il est possible d'envoyer une requête par la méthode <code>POST</code> :
+          <pre>
+            <code>$.post(URL, DATA, SUCCESS)</code>
+          </pre>
+          Exemple :
+          <pre>
+            <code>$.post('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
+    alert('La valeur a été mise à jour (code ' + data + ')')
+  })</code>
+          </pre>
+        </section>
+        <h3>Charger un élément</h3>
+        <section>
+          Un raccourci existe qui permet de charger le contenu d'une page directement dans un élément du DOM. Le principe général est le même, si ce n'est que ce n'est pas une fonction de $ mais de l'élément lui-même. Exemple :
+          <pre>
+            <code>$('#menu').load('menu_dynamique.php', { admin: true })</code>
+          </pre>
+          Cette commande chargera le contenu de la page <code>menu_dynamique.php</code> à laquelle on aura passé le paramètre <code>admin=true</code> avec la méthode GET. Il est également possible de charger une portion de la page distante en précisant laquelle, comme ceci par exemple :
+          <pre>
+            <code>$('#listeDesPrix').load('toutes_les_listes.html #prix')</code>
+          </pre>
+          Cette commande chargera l'élément ayant l'ID <code>prix</code> du document <code>toutes_les_listes.html</code> dans l'élément ayant l'ID <code>listeDesPrix</code> du document courant.
+        </section>
       </section>
-      <h3>POST</h3>
+      <h2>Conclusion</h2>
       <section>
-        De manière parfaitement similaire, il est possible d'envoyer une requête par la méthode <code>POST</code> :
-        <pre>
-          <code>$.post(URL, DATA, SUCCESS)</code>
-        </pre>
-        Exemple :
-        <pre>
-          <code>$.post('mise_a_jour_valeur.php', { valeur: 10 }, function(data) {
-  alert('La valeur a été mise à jour (code ' + data + ')')
-})</code>
-        </pre>
+        <h3>jQuery dans ce document</h3>
+        <section>
+          Ce document utilise jQuery-<span id="jQueryVersion"></span> et voici le code utilisé :
+          <pre>
+            <code id="jQuerySource"></code>
+          </pre>
+        </section>
+        <h3>Participer</h3>
+        <section>
+          N'hésitez pas à compléter ou améliorer ce document en participant à son code sur <a href="https://github.com/SteeveDroz/didacticiel-jquery">GitHub</a>. Toute aide sera grandement appréciée.
+        </section>
       </section>
-      <h3>Charger un élément</h3>
-      <section>
-        Un raccourci existe qui permet de charger le contenu d'une page directement dans un élément du DOM. Le principe général est le même, si ce n'est que ce n'est pas une fonction de $ mais de l'élément lui-même. Exemple :
-        <pre>
-          <code>$('#menu').load('menu_dynamique.php', { admin: true })</code>
-        </pre>
-        Cette commande chargera le contenu de la page <code>menu_dynamique.php</code> à laquelle on aura passé le paramètre <code>admin=true</code> avec la méthode GET. Il est également possible de charger une portion de la page distante en précisant laquelle, comme ceci par exemple :
-        <pre>
-          <code>$('#listeDesPrix').load('toutes_les_listes.html #prix')</code>
-        </pre>
-        Cette commande chargera l'élément ayant l'ID <code>prix</code> du document <code>toutes_les_listes.html</code> dans l'élément ayant l'ID <code>listeDesPrix</code> du document courant.
-      </section>
-    </section>
-    <h2>Conclusion</h2>
-    <section>
-      <h3>jQuery dans ce document</h3>
-      <section>
-        Ce document utilise jQuery-<span id="jQueryVersion"></span> et voici le code utilisé :
-        <pre>
-          <code id="jQuerySource"></code>
-        </pre>
-      </section>
-    </section>
+  </div>
+    <footer>
+      <div>
+        Le <a href="https://github.com/SteeveDroz/didacticiel-jquery">projet GitHub</a> et le contenu de ce document sont sous license <a href="https://opensource.org/licenses/MIT">MIT</a>.
+      </div>
+      <div>
+        Merci de rapporter les erreurs sur <a href="https://github.com/SteeveDroz/didacticiel-jquery/issues">la page consacrée</a>.
+      </div>
+      <div>
+        Projet créé et maintenu par <a href="https://github.com/SteeveDroz">Steeve Droz</a>.
+      </div>
+    </footer>
   </body>
 </html>
