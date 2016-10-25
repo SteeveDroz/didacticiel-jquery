@@ -352,6 +352,31 @@
           </p>
         </section>
       </section>
+      <h2>Animation</h2>
+      <section>
+        Beaucoup d'animations prédéfinies sont offertes par jQuery et il existe une manière de créer des animations personnalisées. Voici quelques manières d'animer les éléments.
+        <h3>show/hide/toggle</h3>
+        Il est possible d'afficher ou de cacher un élément en utilisant les méthodes <code>show()</code> (montrer) et <code>hide()</code> (cacher). Par exemple, on pourrait cacher un texte lors de l'appui sur un bouton :
+        <pre>
+          <code>$('#button1').click(function() {
+  $('#elem').hide()
+})
+
+$('#button2').click(function() {
+  $('#elem').show()
+})</code>
+        </pre>
+        La méthode <code>toggle()</code> (basculer) permet de faire les deux, comme un interrupteur :
+        <pre>
+          <code>$('#button3').click(function() {
+  $('#elem').toggle()
+})</code>
+        </pre>
+      </section>
+      <h3>slideUp/slideDown/slideToggle</h3>
+      <section>
+        De manière similaire, il est possible de faire apparaitre et disparaitre un élément avec une animation de glissement. L'élément se déroule depuis le haut avec <code>slideDown()</code> lorsqu'on veut l'afficher et s'enroule vers le haut avec <code>slideUp()</code> lorsqu'on veut le cacher. <code>slideToggle()</code> effectue l'enroulement/déroulement selon la position actuelle de l'élément.
+      </section>
       <h2>Ajax</h2>
       <section>
         <p>
