@@ -13,6 +13,6 @@ $(function() {
   // On place le numéro de version dans l'élément spécifique.
   $('#jQueryVersion').text($(this).jquery)
 
-  // On insère le code de "didacticiel.js" dans l'élément spécifique.
+  // On insère en AJAX le code de "didacticiel.js" dans l'élément spécifique.
   $('#jQuerySource').load('didacticiel.js')
 })
