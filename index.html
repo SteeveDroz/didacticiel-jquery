@@ -392,7 +392,62 @@ $('#buttonSlideToggle').click(function() {
       </section>
       <h3>fadeIn/fadeOut/fadeToggle</h3>
       <section>
-        À venir&hellip;
+        Une troisième manière d'afficher et de cacher un élément est d'utiliser <code>fadeOut()</code> (disparaitre), <code>fadeIn()</code> (apparaitre) et bien sûr <code>fadeToggle()</code> (basculer l'apparition). Exemple :
+        <pre class="exemple" data-nom="fade" data-elements="div#elem::Cliquez ci-dessous pour tester|button#buttonFadeOut::fadeOut|button#buttonFadeIn::fadeIn|button#buttonFadeToggle::fadeToggle">
+          <code>$('#buttonFadeOut').click(function() {
+  $('#elem').fadeOut()
+})
+
+$('#buttonFadeIn').click(function() {
+  $('#elem').fadeIn()
+})
+
+$('#buttonFadeToggle').click(function() {
+  $('#elem').fadeToggle()
+})</code>
+        </pre>
+      </section>
+      <h3>Combinaisons</h3>
+      <section>
+        Il est parfaitement possible de combiner toutes ces animations. Exemple :
+        <pre class="exemple" data-nom="mix" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonHide::hide|button#buttonShow::show|button#buttonToggle::toggle|button#buttonSlideUp::slideUp|button#buttonSlideDown::slideDown|button#buttonSlideToggle::slideToggle|button#buttonFadeOut::fadeOut|button#buttonFadeIn::fadeIn|button#buttonFadeToggle::fadeToggle">
+          <code>$('#buttonHide').click(function() {
+  $('#elem').hide()
+})
+
+$('#buttonShow').click(function() {
+  $('#elem').show()
+})
+
+$('#buttonToggle').click(function() {
+$('#elem').toggle()
+})
+
+$('#buttonSlideUp').click(function() {
+$('#elem').slideUp()
+})
+
+$('#buttonSlideDown').click(function() {
+$('#elem').slideDown()
+})
+
+$('#buttonSlideToggle').click(function() {
+$('#elem').slideToggle()
+})
+
+$('#buttonFadeOut').click(function() {
+$('#elem').fadeOut()
+})
+
+$('#buttonFadeIn').click(function() {
+$('#elem').fadeIn()
+})
+
+$('#buttonFadeToggle').click(function() {
+$('#elem').fadeToggle()
+})</code>
+        </pre>
+        Bien d'autres animations existent, elles sont toutes décrites sur <a href="https://api.jquery.com/category/effects/">https://api.jquery.com/category/effects/</a>
       </section>
       <h2>Ajax</h2>
       <section>
