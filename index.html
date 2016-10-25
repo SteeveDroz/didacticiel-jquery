@@ -126,12 +126,12 @@
           <section>
             <p>
               Parmi les fonctions les plus simples de jQuery, on trouve notemment <code>text()</code> et <code>html()</code>, qui permettent d'obtenir ou de définir le contenu (soit le contenu brut, soit le contenu HTML). Exemple :
-              <pre>
-                <code>$('#contenu').text('Hello, World!');</code>
+              <pre class="exemple" data-nom="text" data-elements="div#contenu::">
+                <code>$('#contenu').text('Hello, World!')</code>
               </pre>
               définit que la phrase "Hello, World!" sera insérée dans le conteneur ayant l'ID <code>contenu</code>.
               Pour obtenir la valeur d'un élément, il suffit d'utiliser la fonction sans paramètre :
-              <pre>
+              <pre class="exemple" data-nom="html" data-elements="div#zone::<div style='color:yellow;background:red'>Bonjour</div>">
                 <code>console.log($('#zone').html());</code>
               </pre>
               Ici, tout le contenu HTML de l'élément ayant l'ID <code>zone</code> (texte et sous-éléments) sera affiché dans la console.
@@ -141,9 +141,9 @@
             </p>
             <p>
               Exemple :
-              <pre>
-                <code>var prenom = $('#prenom').val();
-  $('#prenomCopie').val(prenom);</code>
+              <pre class="exemple" data-nom="copie" data-elements="input#prenom&value=Jean::|input#prenomCopie::">
+                <code>var prenom = $('#prenom').val()
+$('#prenomCopie').val(prenom)</code>
               </pre>
             </p>
           </section>
@@ -172,7 +172,7 @@
   });</code>
               </pre>
               Explications par étapes détaillées :
-              <pre>
+              <pre class="exemple" data-nom="afficherCode" data-elements="div#code&style=max-height:500px;overflow:auto::">
                 <code>// On isole la balise "html"
   $('html');
   // On extrait son code
@@ -246,7 +246,7 @@
             <code>&lt;div id="nouveau" class="element" style="border:1px solid black;font-family:serif;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/div></code>
           </pre>
           Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
-          <pre>
+          <pre class="exemple" data-nom="ajoutDOM" data-elements="div#elem::Contenu initial">
             <code>$('#elem').append($('&lt;div>', {
     id: 'nouveau',
     "class": 'element',
@@ -282,7 +282,7 @@
       <section>
         <p>
           L'une des autres grandes utilisations de jQuery est la détection de clics. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
-          <pre>
+          <pre class="exemple" data-nom="clic" data-elements="button#bouton1::Cliquez-moi">
             <code>$('#bouton1').click(function() {
     alert('Vous avez cliqué sur le bouton 1 !');
   });</code>
@@ -357,25 +357,38 @@
         Beaucoup d'animations prédéfinies sont offertes par jQuery et il existe une manière de créer des animations personnalisées. Voici quelques manières d'animer les éléments.
         <h3>show/hide/toggle</h3>
         Il est possible d'afficher ou de cacher un élément en utilisant les méthodes <code>show()</code> (montrer) et <code>hide()</code> (cacher). Par exemple, on pourrait cacher un texte lors de l'appui sur un bouton :
-        <pre>
-          <code>$('#button1').click(function() {
+        <pre class="exemple" data-nom="showHide" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonHide::hide|button#buttonShow::show">
+          <code>$('#buttonHide').click(function() {
   $('#elem').hide()
 })
 
-$('#button2').click(function() {
+$('#buttonShow').click(function() {
   $('#elem').show()
 })</code>
         </pre>
         La méthode <code>toggle()</code> (basculer) permet de faire les deux, comme un interrupteur :
-        <pre>
-          <code>$('#button3').click(function() {
+        <pre class="exemple" data-nom="toggle" data-elements="div#elem::Cliquez ci-dessous|button#buttonToggle::toggle">
+          <code>$('#buttonToggle').click(function() {
   $('#elem').toggle()
 })</code>
         </pre>
       </section>
       <h3>slideUp/slideDown/slideToggle</h3>
       <section>
-        De manière similaire, il est possible de faire apparaitre et disparaitre un élément avec une animation de glissement. L'élément se déroule depuis le haut avec <code>slideDown()</code> lorsqu'on veut l'afficher et s'enroule vers le haut avec <code>slideUp()</code> lorsqu'on veut le cacher. <code>slideToggle()</code> effectue l'enroulement/déroulement selon la position actuelle de l'élément.
+        De manière similaire, il est possible de faire apparaitre et disparaitre un élément avec une animation de glissement. L'élément se déroule depuis le haut avec <code>slideDown()</code> lorsqu'on veut l'afficher et s'enroule vers le haut avec <code>slideUp()</code> lorsqu'on veut le cacher. <code>slideToggle()</code> effectue l'enroulement/déroulement selon la position actuelle de l'élément. Exemple :
+        <pre class="exemple" data-nom="slide" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonSlideUp::slideUp|button#buttonSlideDown::slideDown|button#buttonSlideToggle::slideToggle">
+          <code>$('#buttonSlideUp').click(function() {
+  $('#elem').slideUp()
+})
+
+$('#buttonSlideDown').click(function() {
+  $('#elem').slideDown()
+})
+
+$('#buttonSlideToggle').click(function() {
+  $('#elem').slideToggle()
+})</code>
+        </pre>
       </section>
       <h3>fadeIn/fadeOut/fadeToggle</h3>
       <section>
