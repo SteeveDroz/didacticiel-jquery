@@ -114,12 +114,12 @@
           <p>
             Les sélecteurs plus complexes de CSS sont également compris par jQuery. Exemples :
             <pre>
-              <code>$('div .titre'); // Les éléments de classe "titre" contenus dans un div
-$('div > p'); // Les éléments p enfants d'un div
-$('span, #zone, .content'); // Les éléments span,
+              <code>$('div .titre') // Les éléments de classe "titre" contenus dans un div
+$('div > p') // Les éléments p enfants d'un div
+$('span, #zone, .content') // Les éléments span,
                             // ou l'élément avec l'ID "zone"
                             // ou les éléments de la classe "content"
-$('input:checked'); // Les inputs qui sont cochés</code>
+$('input:checked') // Les inputs qui sont cochés</code>
             </pre>
           </p>
         </section>
@@ -133,7 +133,7 @@ $('input:checked'); // Les inputs qui sont cochés</code>
               définit que la phrase "Hello, World!" sera insérée dans le conteneur ayant l'ID <code>contenu</code>.
               Pour obtenir la valeur d'un élément, il suffit d'utiliser la fonction sans paramètre :
               <pre class="exemple" data-nom="html" data-elements="div#zone::<div style='color:yellow;background:red'>Bonjour</div>">
-                <code>console.log($('#zone').html());</code>
+                <code>console.log($('#zone').html())</code>
               </pre>
               Ici, tout le contenu HTML de l'élément ayant l'ID <code>zone</code> (texte et sous-éléments) sera affiché dans la console.
             </p>
@@ -169,27 +169,27 @@ $('#prenomCopie').val(prenom)</code>
               Le fichier JavaScript contiendra quant à lui le code suivant :
               <pre class="exemple" data-nom="afficherCode" data-elements="div#code&style=max-height:500px;overflow:auto::">
                 <code>$(function() {
-    $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>');
-  });</code>
+    $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
+  })</code>
               </pre>
               Explications par étapes détaillées :
               <pre>
                 <code>// On isole la balise "html"
-  $('html');
+  $('html')
   // On extrait son code
-  $('html').html();
+  $('html').html()
 
   // On isole l'élément ayant l'ID "code"
   $('#code')
   // On insère le code trouvé plus tôt dans son texte
-  $('#code').text($('html').html());
+  $('#code').text($('html').html())
   // On ajoute la balise html avec des retours à la ligne (\n).
   $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
 
   // le tout dans la fonction lancée lorsque le DOM est prêt
   $(function() {
     $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
-  });</code>
+  })</code>
               </pre>
             </p>
           </section>
@@ -287,8 +287,8 @@ $('#prenomCopie').val(prenom)</code>
           L'une des autres grandes utilisations de jQuery est la détection de clics. Cette détection peut se faire sur n'importe quel élément du DOM, que ce soit un <code>button</code>, un <code>div</code>, un <code>input</code> ou même le <code>body</code>. La simple utilisation de la fonction <code>.click()</code> permet de définir l'action liée à cet évènement.
           <pre class="exemple" data-nom="clic" data-elements="button#bouton1::Cliquez-moi">
             <code>$('#bouton1').click(function() {
-    alert('Vous avez cliqué sur le bouton 1 !');
-  });</code>
+    alert('Vous avez cliqué sur le bouton 1 !')
+  })</code>
           </pre>
           Et c'est tout ! Avouez que jQuery simplifie réellement la vie, non ?
         </p>
@@ -297,7 +297,7 @@ $('#prenomCopie').val(prenom)</code>
           <p>
             Afin de simuler un clic de l'utilisateur, l'appel à la fonction <code>click()</code> sans paramètres suffit. Ainsi, la ligne suivante réalisera un clic sur le bouton 2 :
             <pre>
-              <code>$('#bouton2').click();</code>
+              <code>$('#bouton2').click()</code>
             </pre>
           </p>
         </section>
