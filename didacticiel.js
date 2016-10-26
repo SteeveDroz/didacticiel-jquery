@@ -38,7 +38,7 @@ $(function() {
       exemple.append(nouvelElement)
     })
 
-    $(this).prepend(exemple)
+    $(this).append(exemple)
     $(this).append($('<script></script>', {
       text: code.replace(/#(\w)/g,'#' + nom + '_$1')
     }))
