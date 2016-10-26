@@ -225,15 +225,15 @@ $('#prenomCopie').val(prenom)</code>
         <section>
           Pour créer un nouvel élément, deux méthodes sont possibles. Premièrement, on peut écrire le code HTML du nouvel élément et ajouter ce texte à un élément existant, comme ceci :
           <pre>
-            <code>$('#elem').append('&lt;div>nouveau&lt;/div>')      // Ajout après les éléments existants
-  $('#elem').prepend('&lt;div>nouveau&lt;/div>')     // Ajout avant les éléments existants
-  $('#elem').html('&lt;div>nouveau&lt;/div>')        // Remplace les éléments existants
-  $('#elem').replaceWith('&lt;div>nouveau&lt;/div>') // Remplace #elem par le div
-  $('#elem').wrap('&lt;div>nouveau&lt;/div>')        // Encapsule #elem dans le div</code>
+            <code>$('#elem').append('&lt;p>nouveau&lt;/p>')      // Ajout après les éléments existants
+$('#elem').prepend('&lt;p>nouveau&lt;/p>')     // Ajout avant les éléments existants
+$('#elem').html('&lt;p>nouveau&lt;/p>')        // Remplace les éléments existants
+$('#elem').replaceWith('&lt;p>nouveau&lt;/p>') // Remplace #elem par le div
+$('#elem').wrap('&lt;p>nouveau&lt;/p>')        // Encapsule #elem dans le div</code>
           </pre>
           L'autre possibilité est de créer un nouvel objet jQuery en utilisant la fonction <code>$</code> et en passant des paramètres de construction. Exemple :
           <pre>
-            <code>let nouvelElement = $('&lt;div>', {
+            <code>let nouvelElement = $('&lt;p>', {
     id: 'nouveau',
     "class": 'element', // Entre guillemets, car class est un mot réservé
     text: 'Je suis un nouvel élément',
@@ -246,11 +246,11 @@ $('#prenomCopie').val(prenom)</code>
           </pre>
           Ceci créera l'élément
           <pre>
-            <code>&lt;div id="nouveau" class="element" style="border:1px solid black;font-family:serif;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/div></code>
+            <code>&lt;p id="nouveau" class="element" style="border:1px solid black;font-family:serif;" onclick="function(){alert('Vous avez cliqué !')}">Je suis un nouvel élément&lt;/p></code>
           </pre>
           Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
           <pre class="exemple" data-nom="ajoutDOM" data-elements="div#elem::Contenu initial">
-            <code>$('#elem').append($('&lt;div>', {
+            <code>$('#elem').append($('&lt;p>', {
     id: 'nouveau',
     "class": 'element',
     text: 'Je suis un nouvel élément',
@@ -267,9 +267,9 @@ $('#prenomCopie').val(prenom)</code>
           Quatre méthodes sont possible pour enlever un élément du DOM :
           <pre>
             <code>$('#elem').remove() // Supprime l'élément
-  $('#elem').empty()  // Supprime les éléments dans #elem (garde le texte)
-  $('#elem').unwrap() // Désencapsule #elem de son parent
-  $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
+$('#elem').empty()  // Supprime les éléments dans #elem (garde le texte)
+$('#elem').unwrap() // Désencapsule #elem de son parent
+$('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ultérieure)</code>
           </pre>
         </section>
         <h3>Déplacement</h3>
