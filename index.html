@@ -167,13 +167,13 @@ $('#prenomCopie').val(prenom)</code>
             </p>
             <p>
               Le fichier JavaScript contiendra quant à lui le code suivant :
-              <pre>
+              <pre class="exemple" data-nom="afficherCode" data-elements="div#code&style=max-height:500px;overflow:auto::">
                 <code>$(function() {
-    $('#code').text($('html').html());
+    $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>');
   });</code>
               </pre>
               Explications par étapes détaillées :
-              <pre class="exemple" data-nom="afficherCode" data-elements="div#code&style=max-height:500px;overflow:auto::">
+              <pre>
                 <code>// On isole la balise "html"
   $('html');
   // On extrait son code
@@ -183,10 +183,12 @@ $('#prenomCopie').val(prenom)</code>
   $('#code')
   // On insère le code trouvé plus tôt dans son texte
   $('#code').text($('html').html());
+  // On ajoute la balise html avec des retours à la ligne (\n).
+  $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
 
   // le tout dans la fonction lancée lorsque le DOM est prêt
   $(function() {
-    $('#code').text($('html').html());
+    $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
   });</code>
               </pre>
             </p>
