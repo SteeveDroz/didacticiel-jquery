@@ -24,6 +24,17 @@
             Page d'accueil jQuery, <a href="https://jquery.com">https://jquery.com</a>
           </p>
         </blockquote>
+        <h3>Prérequis</h3>
+        <section>
+          <p>
+            Afin de comprendre ce didacticiel, le lecteur doit posséder les quelques compétences suivantes :
+            <ul>
+              <li>Bases de programmation</li>
+              <li>Compréhension du format <abbr title="JavaScript Object Notation">JSON</abbr></li>
+            </ul>
+            Il est également à noter que l'utilisation de JavaScript dans ce document tient compte de <abbr title="EcmaScript 6">ES6</abbr>.
+          </p>
+        </section>
         <h3>À propos des exemples</h3>
         <section>
           Les plus curieux d'entre vous désireront étudier les différents éléments de cette page. Il est donc important de signaler que les ID des différents exemples ne sont pas réellement les ID indiqués. En effet, afin d'éviter un conflit entre les exemples, chacun possède un préfixe qui n'est pas indiqué dans le code de l'exemple.
@@ -366,28 +377,29 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
       <section>
         Beaucoup d'animations prédéfinies sont offertes par jQuery et il existe une manière de créer des animations personnalisées. Voici quelques manières d'animer les éléments.
         <h3>show/hide/toggle</h3>
-        Il est possible d'afficher ou de cacher un élément en utilisant les méthodes <code>show()</code> (montrer) et <code>hide()</code> (cacher). Par exemple, on pourrait cacher un texte lors de l'appui sur un bouton :
-        <pre class="exemple" data-nom="showHide" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonHide::hide|button#buttonShow::show">
-          <code>$('#buttonHide').click(function() {
+        <section>
+          Il est possible d'afficher ou de cacher un élément en utilisant les méthodes <code>show()</code> (montrer) et <code>hide()</code> (cacher). Par exemple, on pourrait cacher un texte lors de l'appui sur un bouton :
+          <pre class="exemple" data-nom="showHide" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonHide::hide|button#buttonShow::show">
+            <code>$('#buttonHide').click(function() {
   $('#elem').hide()
 })
 
 $('#buttonShow').click(function() {
   $('#elem').show()
 })</code>
-        </pre>
-        La méthode <code>toggle()</code> (basculer) permet de faire les deux, comme un interrupteur :
-        <pre class="exemple" data-nom="toggle" data-elements="div#elem::Cliquez ci-dessous|button#buttonToggle::toggle">
-          <code>$('#buttonToggle').click(function() {
+          </pre>
+          La méthode <code>toggle()</code> (basculer) permet de faire les deux, comme un interrupteur :
+          <pre class="exemple" data-nom="toggle" data-elements="div#elem::Cliquez ci-dessous|button#buttonToggle::toggle">
+            <code>$('#buttonToggle').click(function() {
   $('#elem').toggle()
 })</code>
-        </pre>
+          </pre>
       </section>
-      <h3>slideUp/slideDown/slideToggle</h3>
-      <section>
-        De manière similaire, il est possible de faire apparaitre et disparaitre un élément avec une animation de glissement. L'élément se déroule depuis le haut avec <code>slideDown()</code> lorsqu'on veut l'afficher et s'enroule vers le haut avec <code>slideUp()</code> lorsqu'on veut le cacher. <code>slideToggle()</code> effectue l'enroulement/déroulement selon la position actuelle de l'élément. Exemple :
-        <pre class="exemple" data-nom="slide" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonSlideUp::slideUp|button#buttonSlideDown::slideDown|button#buttonSlideToggle::slideToggle">
-          <code>$('#buttonSlideUp').click(function() {
+        <h3>slideUp/slideDown/slideToggle</h3>
+        <section>
+          De manière similaire, il est possible de faire apparaitre et disparaitre un élément avec une animation de glissement. L'élément se déroule depuis le haut avec <code>slideDown()</code> lorsqu'on veut l'afficher et s'enroule vers le haut avec <code>slideUp()</code> lorsqu'on veut le cacher. <code>slideToggle()</code> effectue l'enroulement/déroulement selon la position actuelle de l'élément. Exemple :
+          <pre class="exemple" data-nom="slide" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonSlideUp::slideUp|button#buttonSlideDown::slideDown|button#buttonSlideToggle::slideToggle">
+            <code>$('#buttonSlideUp').click(function() {
   $('#elem').slideUp()
 })
 
@@ -398,13 +410,13 @@ $('#buttonSlideDown').click(function() {
 $('#buttonSlideToggle').click(function() {
   $('#elem').slideToggle()
 })</code>
-        </pre>
-      </section>
-      <h3>fadeIn/fadeOut/fadeToggle</h3>
-      <section>
-        Une troisième manière d'afficher et de cacher un élément est d'utiliser <code>fadeOut()</code> (disparaitre), <code>fadeIn()</code> (apparaitre) et bien sûr <code>fadeToggle()</code> (basculer l'apparition). Exemple :
-        <pre class="exemple" data-nom="fade" data-elements="div#elem::Cliquez ci-dessous pour tester|button#buttonFadeOut::fadeOut|button#buttonFadeIn::fadeIn|button#buttonFadeToggle::fadeToggle">
-          <code>$('#buttonFadeOut').click(function() {
+          </pre>
+        </section>
+        <h3>fadeIn/fadeOut/fadeToggle</h3>
+        <section>
+          Une troisième manière d'afficher et de cacher un élément est d'utiliser <code>fadeOut()</code> (disparaitre), <code>fadeIn()</code> (apparaitre) et bien sûr <code>fadeToggle()</code> (basculer l'apparition). Exemple :
+          <pre class="exemple" data-nom="fade" data-elements="div#elem::Cliquez ci-dessous pour tester|button#buttonFadeOut::fadeOut|button#buttonFadeIn::fadeIn|button#buttonFadeToggle::fadeToggle">
+            <code>$('#buttonFadeOut').click(function() {
   $('#elem').fadeOut()
 })
 
@@ -415,13 +427,13 @@ $('#buttonFadeIn').click(function() {
 $('#buttonFadeToggle').click(function() {
   $('#elem').fadeToggle()
 })</code>
-        </pre>
-      </section>
-      <h3>Combinaisons</h3>
-      <section>
-        Il est parfaitement possible de combiner toutes ces animations. Exemple :
-        <pre class="exemple" data-nom="mix" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonHide::hide|button#buttonShow::show|button#buttonToggle::toggle|button#buttonSlideUp::slideUp|button#buttonSlideDown::slideDown|button#buttonSlideToggle::slideToggle|button#buttonFadeOut::fadeOut|button#buttonFadeIn::fadeIn|button#buttonFadeToggle::fadeToggle">
-          <code>$('#buttonHide').click(function() {
+          </pre>
+        </section>
+        <h3>Combinaisons</h3>
+        <section>
+          Il est parfaitement possible de combiner toutes ces animations. Exemple :
+          <pre class="exemple" data-nom="mix" data-elements="div#elem::Cliquez sur les boutons ci-dessous|button#buttonHide::hide|button#buttonShow::show|button#buttonToggle::toggle|button#buttonSlideUp::slideUp|button#buttonSlideDown::slideDown|button#buttonSlideToggle::slideToggle|button#buttonFadeOut::fadeOut|button#buttonFadeIn::fadeIn|button#buttonFadeToggle::fadeToggle">
+            <code>$('#buttonHide').click(function() {
   $('#elem').hide()
 })
 
@@ -456,8 +468,9 @@ $('#elem').fadeIn()
 $('#buttonFadeToggle').click(function() {
 $('#elem').fadeToggle()
 })</code>
-        </pre>
-        Bien d'autres animations existent, elles sont toutes décrites sur <a href="https://api.jquery.com/category/effects/">https://api.jquery.com/category/effects/</a>
+          </pre>
+          Bien d'autres animations existent, elles sont toutes décrites sur <a href="https://api.jquery.com/category/effects/">https://api.jquery.com/category/effects/</a>
+        </section>
       </section>
       <h2>Ajax</h2>
       <section>
