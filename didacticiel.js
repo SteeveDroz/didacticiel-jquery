@@ -44,13 +44,17 @@ $(function() {
     // On isole le code.
     let code = $(this).find('code').text()
     // On crée une zone d'exemple...
-    let exemple = $('<div>')
+    let exemple = $('<div></div>')
     // ... ans laquel on insérera chaque élément...
     elements.forEach(function(element) {
       let attributs = element.attributs.split('&')
-      let nouvelElement = $('<' + element.balise + '>', {
+      /*
+      La ligne ci-dessous a des problèmes d'affichage lorsqu'on la voit par
+      le didacticiel. Merci de vérifier le code source.
+      */
+      let nouvelElement = $(`<${element.balise}></${element.balise}>`, {
         // ... en modifiant simplement son ID pour qu'il soit unique sur la page.
-        id: nom + '_' + attributs.shift(),
+        id: `${nom}_${attributs.shift()}`,
         html: element.contenu
       })
       // On oublie pas de gérer les attributs.
@@ -64,7 +68,7 @@ $(function() {
     })
 
     // On crée un fieldset...
-    let resultat = $('<fieldset>')
+    let resultat = $('<fieldset></fieldset>')
     // ... auquel on donne le titre "Résultat"...
     resultat.append('<legend>Résultat</legend>')
     // ... et dans lequel on ajoute chaque élément à la zone d'exemple.
@@ -74,7 +78,7 @@ $(function() {
     // Ensuite, on ajoute une copie du script qui soit fonctionnelle...
     $(this).append($('<script></script>', {
       // ... en ajustant les ID comme plus haut.
-      text: code.replace(/#(\w)/g,'#' + nom + '_$1')
+      text: code.replace(/#(\w)/g,`#${nom}_$1`)
     }))
     // On règle encore quelques propriétés CSS.
     resultat.css('position', 'relative').css('white-space', 'normal')
@@ -84,9 +88,9 @@ $(function() {
       // ... on mémorise d'élément pour éviter des conflits,
       let element = $(this)
       // ... on crée un tooltip
-      let tooltip = $('<div>', {
+      let tooltip = $('<div></div>', {
         // qui contient l'ID de l'élément...
-        text: '#' + element.attr('id').replace(/^[^_]*_/, ''),
+        text: `#${element.attr('id').replace(/^[^_]*_/, '')}`,
         // ... et du CSS.
         css: {
           background: '#ccf',
@@ -124,6 +128,9 @@ $(function() {
   // On place le numéro de version dans l'élément spécifique.
   $('#jQueryVersion').text($(this).jquery)
 
+  let jQuerySource = $('<div></div>')
+  jQuerySource.load('didacticiel.js', function() {
+    $('#jQuerySource').text(jQuerySource.html())
+  })
   // On insère en AJAX le code de "didacticiel.js" dans l'élément spécifique.
-  $('#jQuerySource').load('didacticiel.js')
 }) // fin de $(function(){})

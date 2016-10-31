@@ -251,7 +251,7 @@ $('#elem').wrap('&lt;p>nouveau&lt;/p>')        // Encapsule #elem dans le div</c
           </pre>
           L'autre possibilité est de créer un nouvel objet jQuery en utilisant la fonction <code>$</code> et en passant des paramètres de construction. Exemple :
           <pre>
-            <code>let nouvelElement = $('&lt;p>', {
+            <code>let nouvelElement = $('&lt;p>&lt;/p>', {
     id: 'nouveau',
     "class": 'element', // Entre guillemets, car class est un mot réservé
     text: 'Je suis un nouvel élément',
@@ -268,7 +268,7 @@ $('#elem').wrap('&lt;p>nouveau&lt;/p>')        // Encapsule #elem dans le div</c
           </pre>
           Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
           <pre class="exemple" data-nom="ajoutDOM" data-elements="div#elem::Contenu initial">
-            <code>$('#elem').append($('&lt;p>', {
+            <code>$('#elem').append($('&lt;p>&lt;/p>', {
     id: 'nouveau',
     "class": 'element',
     text: 'Je suis un nouvel élément',
