@@ -63,13 +63,59 @@ $(function() {
       exemple.append(nouvelElement)
     })
 
-    // On ajoute chaque élément à la zone d'exemple...
-    $(this).append(exemple)
-    // ... puis on ajoute une copie du script qui soit fonctionnelle...
+    // On crée un fieldset...
+    let resultat = $('<fieldset>')
+    // ... auquel on donne le titre "Résultat"...
+    resultat.append('<legend>Résultat</legend>')
+    // ... et dans lequel on ajoute chaque élément à la zone d'exemple.
+    $(resultat).append(exemple)
+    // ... avant de l'ajouter à l'exemple.
+    $(this).append(resultat)
+    // Ensuite, on ajoute une copie du script qui soit fonctionnelle...
     $(this).append($('<script></script>', {
       // ... en ajustant les ID comme plus haut.
       text: code.replace(/#(\w)/g,'#' + nom + '_$1')
     }))
+    // On règle encore quelques propriétés CSS.
+    resultat.css('position', 'relative').css('white-space', 'normal')
+
+    // Pour chaque élément du résultat...
+    resultat.children().eq(1).children().each(function() {
+      // ... on mémorise d'élément pour éviter des conflits,
+      let element = $(this)
+      // ... on crée un tooltip
+      let tooltip = $('<div>', {
+        // qui contient l'ID de l'élément...
+        text: '#' + element.attr('id').replace(/^[^_]*_/, ''),
+        // ... et du CSS.
+        css: {
+          background: '#ccf',
+          border: '1px solid #00f',
+          boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.4)',
+          display: 'block',
+          padding: '5px',
+          position: 'absolute'
+        }
+      })
+      // On règle le survol de l'élément comme suit :
+      $(this).hover(function() {
+        // On ajoute son tooltip au body quand on le survole...
+        $('body').append(tooltip)
+      }, function() {
+        // ... et on l'enlève quand on arrête le survol.
+        tooltip.detach()
+      }).mousemove(function(e) {
+        // Puis on place le tooltip à proximité du curseur quand il bouge.
+        tooltip.css('left', e.pageX).css('top', e.pageY + 20)
+      })
+    })
+  })
+
+  // Exercice 1
+  // ==========
+
+  $('#exercice1Code').keyup(function() {
+    $('#exercice1Script').text($('#exercice1Code').val())
   })
 
   // Gestion de la partie affichage de ce code
