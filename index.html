@@ -155,13 +155,13 @@ $('#prenomCopie').val(prenom)</code>
               </pre>
             </p>
           </section>
-          <h3>Afficher le code de la page</h3>
+          <h3>Afficher le code d'un élément</h3>
           <section>
             <p>
-              Le but de l'exercice est de créer un <code>div</code> qui contiendra l'intégralité du code HTML de la page en cours.
+              Le but de l'exercice est de placer dans l'élément ayant l'ID <code>exercice1</code> qui contiendra le code HTML de la citation <code>&lt;blockquote></code> située au début de ce didacticiel.
             </p>
             <p>
-              Indice : pour réaliser cet exercice, l'utilisation de <code>html()</code> est nécessaire afin d'obtenir le code, l'utilisation de <code>text()</code> est également nécessaire afin d'écrire le code sous forme de texte brut.
+              Indice : pour réaliser cet exercice, l'utilisation de <code>html()</code> est nécessaire afin d'obtenir le code, l'utilisation de <code>text()</code> est également nécessaire afin d'écrire le code sous forme de texte brut. Vous aurez également besoin de <code>first()</code> qui sélectionne le premier élément d'une liste.
             </p>
           </section>
           <h3 class="collapsed">Correction</h3>
@@ -176,27 +176,27 @@ $('#prenomCopie').val(prenom)</code>
               Le fichier JavaScript contiendra quant à lui le code suivant :
               <pre class="exemple" data-nom="afficherCode" data-elements="div#code&style=max-height:500px;overflow:auto::">
                 <code>$(function() {
-    $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
-  })</code>
+  $('#code').text($('blockquote').first().html())
+})</code>
               </pre>
               Explications par étapes détaillées :
               <pre>
-                <code>// On isole la balise "html"
-  $('html')
-  // On extrait son code
-  $('html').html()
+                <code>// On isole les balises "blockquote"
+$('blockquote')
+// On sélectionne la première d'entre elles
+$('blockquote').first()
+// On extrait son code HTML
+$('blockquote').first().html()
 
-  // On isole l'élément ayant l'ID "code"
-  $('#code')
-  // On insère le code trouvé plus tôt dans son texte
-  $('#code').text($('html').html())
-  // On ajoute la balise html avec des retours à la ligne (\n).
-  $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
+// On isole l'élément ayant l'ID "code"
+$('#code')
+// On insère le code trouvé plus tôt dans son texte
+$('#code').text($('blockquote').first().html())
 
-  // le tout dans la fonction lancée lorsque le DOM est prêt
-  $(function() {
-    $('#code').text('&lt;html>\n' + $('html').html() + '\n&lt;/html>')
-  })</code>
+// le tout dans la fonction lancée lorsque le DOM est prêt
+$(function() {
+  $('#code').text($('blockquote').first().html())
+})</code>
               </pre>
             </p>
           </section>
