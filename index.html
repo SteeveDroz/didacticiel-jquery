@@ -298,6 +298,45 @@ $('#elem').detach() // Retire #elem du DOM sans le détruire (réinsertion ulté
           </pre>
           Ceci déplacera l'élément <code>#bougezMoi</code> d'où qu'il se trouve vers <code>#elem</code>.
         </section>
+        <h3>Afficher la page avec jQuery</h3>
+        <section>
+          Le but de cet exercice est de créer une page qui affichera dans un <code>div</code> avec l'ID <code>noJS</code> le message suivant si les utilisateurs n'ont pas activé JavaScript sur leur navigateur :
+          <blockquote>
+            Désolé, vous devez activer JavaScript pour voir ce site.
+          </blockquote>
+          En revanche, si le navigateur possède JavaScript, le contenu suivant sera affiché dans un <code>div</code> avec l'ID <code>JS</code> :
+          <blockquote>
+            Lorem <button>ipsum</button> dolor sit amet.
+          </blockquote>
+        </section>
+        <h3 class="collapsed">Correction</h3>
+        <section>
+          Dans le code HTML, il faut ajouter le texte visible par les gens qui n'ont pas JavaScript :
+          <pre>
+            <code>&lt;div id="noJS">Désolé, vous devez activer JavaScript pour voir ce site.&lt;div></code>
+          </pre>
+          Le fichier JavaScript contiendra quant à lui le code suivant :
+          <pre>
+            <code>// Lorsque le DOM est prêt...
+$(function() {
+  // ... on enlève le message d'avertissement, ...
+  $('#noJS').remove()
+  // ... puis on crée le nouveau contenu...
+  let contenu = $('&lt;div>&lt;/div>', {
+    id: 'JS',
+    html: 'Lorem &lt;button>ipsum&lt;/button> dolor sit amet.'
+  })
+  // ... qu'on ajoute au body.
+  $('body').append(contenu)
+})</code>
+          </pre>
+          Il est à noter que nous avons également la possibilité d'utiliser quelque chose qui n'a pas été vu plus haut : la méthode <code>replaceWith</code> :
+          <pre class="exemple" data-nom="exercice2" data-elements="div#noJS::Désolé, vous devez activer JavaScript pour voir ce site.">
+            <code>$(function() {
+  $('#noJS').replaceWith('&lt;div id="JS">Lorem &lt;button>ipsum&lt;/button> dolor sit amet.&lt;/div>')
+})</code>
+          </pre>
+        </section>
       </section>
       <h2>Ça clique de partout</h2>
       <section>

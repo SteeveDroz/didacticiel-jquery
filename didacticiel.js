@@ -78,14 +78,14 @@ $(function() {
     // Ensuite, on ajoute une copie du script qui soit fonctionnelle...
     $(this).append($('<script></script>', {
       // ... en ajustant les ID comme plus haut.
-      text: code.replace(/#(\w)/g,`#${nom}_$1`)
+      text: code.replace(/#(\w+)/g,`#${nom}_$1`)
     }))
     // On règle encore quelques propriétés CSS.
     resultat.css('position', 'relative').css('white-space', 'normal')
 
     // Pour chaque élément du résultat...
     resultat.children().eq(1).children().each(function() {
-      // ... on mémorise d'élément pour éviter des conflits,
+      // ... on mémorise d'élément pour éviter des conflits, ...
       let element = $(this)
       // ... on crée un tooltip
       let tooltip = $('<div></div>', {
