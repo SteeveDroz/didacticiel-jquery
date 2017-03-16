@@ -58,7 +58,7 @@
           <div class="attention">
             Bien que la compatibilité soit de mise avec jQuery, il est nécessaire de bien choisir sa version.
             <ul>
-              <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux naivgateurs.</li>
+              <li>jQuery-1.x est encore compatible avec les navigateurs &laquo;&nbsp;legacy&nbsp;&raquo;, c'est-à-dire de l'ancien temps (IE 6-7-8 en font partie), au dépend des fonctionnalités modernes offertes uniquement par les nouveaux navigateurs.</li>
               <li>jQuery-2.x est compatible avec les navigateurs les plus récents. Il est conseillé de continuer sur cette version si vous aviez commencé par l'utiliser.</li>
               <li>jQuery-3.x est la suite logique de jQuery-2.x, mais quelques modifications le rendent non-rétrocompatible.</li>
             </ul>
@@ -251,7 +251,7 @@ $('#elem').wrap('&lt;p>nouveau&lt;/p>')        // Encapsule #elem dans le div</c
           </pre>
           L'autre possibilité est de créer un nouvel objet jQuery en utilisant la fonction <code>$</code> et en passant des paramètres de construction. Exemple :
           <pre>
-            <code>let nouvelElement = $('&lt;p>&lt;/p>', {
+            <code>let nouvelElement = $('&lt;p>', {
     id: 'nouveau',
     "class": 'element', // Entre guillemets, car class est un mot réservé
     text: 'Je suis un nouvel élément',
@@ -268,7 +268,7 @@ $('#elem').wrap('&lt;p>nouveau&lt;/p>')        // Encapsule #elem dans le div</c
           </pre>
           Il poura être ajouté à l'élément de son choix avec les méthodes présentées plus haut, par exemple :
           <pre class="exemple" data-nom="ajoutDOM" data-elements="div#elem::Contenu initial">
-            <code>$('#elem').append($('&lt;p>&lt;/p>', {
+            <code>$('#elem').append($('&lt;p>', {
     id: 'nouveau',
     "class": 'element',
     text: 'Je suis un nouvel élément',
